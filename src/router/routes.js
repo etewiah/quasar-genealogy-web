@@ -6,6 +6,7 @@ const routes = [
       { path: "", component: () => import("pages/IndexPage.vue") },
       {
         path: "static-data",
+        name: "rTopolaStaticDataPage",
         component: () => import("pages/TopolaStaticDataPage.vue"),
       },
     ],
