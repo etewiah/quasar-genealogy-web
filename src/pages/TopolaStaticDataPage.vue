@@ -1,14 +1,13 @@
 <template>
   <q-page class="flex flex-center">
-    <TopolaExample :topolaData="topolaData" />
-    <!-- <img alt="Quasar logo"
-         src="~assets/quasar-logo-vertical.svg"
-         style="width: 200px; height: 200px"> -->
+    <TopolaWrapper :topolaData="topolaData"
+                   chartType="RelativesChart"
+                   renderer="DetailedRenderer" />
   </q-page>
 </template>
 
 <script setup>
-import TopolaExample from 'components/TopolaExample.vue'
+import TopolaWrapper from 'components/TopolaWrapper.vue'
 defineOptions({
   name: 'TopolaStaticDataPage'
 });
