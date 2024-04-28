@@ -20,7 +20,7 @@ export default {
       type: String,
       required: true,
       validator: function (value) {
-        return ['FancyChart', 'RelativesChart', 'HourglassChart'].includes(value);
+        return ['AncestorChart', 'FancyChart', 'RelativesChart', 'HourglassChart'].includes(value);
       }
     },
     renderer: {
@@ -37,14 +37,40 @@ export default {
         }
       },
     },
+    renderer: {
+      handler: function (newVal) {
+        if (newVal && newVal.length > 0) {
+          this.$refs.graphElement.innerHTML = ""
+          this.updateChart()
+        }
+      },
+    },
   },
   methods: {
+    topolaIndiCallback(info, moreInfor) { },
+    // topolaFamCallback(info, info2) { },
+    topolaHrefFunc(idInfo) { },
     updateChart() {
       const chart = topola.createChart({
         json: this.$props.topolaData,
+        animate: true,
         svgSelector: '#graph',
         chartType: topola[this.$props.chartType],
         renderer: topola[this.$props.renderer],
+        indiUrl: '/#static-data?tree=tree381&personID=${id}',
+        famUrl: '/#static-data?tree=tree381&familyID=${id}',
+        indiHrefFunc: this.topolaHrefFunc,
+        famHrefFunc: this.topolaHrefFunc,
+        // indiHrefFunc?: (id: string) => string;
+        // famHrefFunc?: (id: string) => string;
+        horizontal: true,
+        colors: topola.ChartColors.COLOR_BY_SEX,
+        // AncestorChart CircleRenderer
+        indiCallback: this.topolaIndiCallback,
+        // famCallback: this.topolaFamCallback,
+        // indiCallback?: (id: IndiInfo) => void;
+        // famCallback?: (id: FamInfo) => void;
+        updateSvgSize: true,
       });
       chart.render();
     }
