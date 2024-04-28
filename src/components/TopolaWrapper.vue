@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div id="topola-chart"></div>
-    <svg></svg>
+    <div id="topola-chart">
+      <svg ref="graphElement"
+           id="graph" />
+    </div>
   </div>
 </template>
 <script>
@@ -26,16 +28,29 @@ export default {
       required: true
     }
   },
-
-  setup(props) {
-    onMounted(() => {
+  watch: {
+    chartType: {
+      handler: function (newVal) {
+        if (newVal && newVal.length > 0) {
+          this.$refs.graphElement.innerHTML = ""
+          this.updateChart()
+        }
+      },
+    },
+  },
+  methods: {
+    updateChart() {
       const chart = topola.createChart({
-        json: props.topolaData,
-        chartType: topola[props.chartType],
-        renderer: topola[props.renderer],
+        json: this.$props.topolaData,
+        svgSelector: '#graph',
+        chartType: topola[this.$props.chartType],
+        renderer: topola[this.$props.renderer],
       });
-      chart.render(document.getElementById('topola-chart'));
-    });
-  }
+      chart.render();
+    }
+  },
+  mounted() {
+    this.updateChart()
+  },
 }
 </script>
