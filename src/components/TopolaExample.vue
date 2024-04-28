@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="topola-chart"></div>
+    <svg></svg>
   </div>
 </template>
 
