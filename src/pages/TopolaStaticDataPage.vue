@@ -2,8 +2,9 @@
   <q-page class="flex">
     <div class="row max-ctr"
          style="">
-      <!-- <div>
-      </div> -->
+      <div class="q-my-lg q-mx-md col-xs-12">
+        <TopolaIndividual :topolaJsonData="topolaJsonData" />
+      </div>
       <div class="q-my-lg q-mx-md col-xs-12">
         <TopolaWrapper :topolaData="topolaJsonData"
                        :chartIsHorizontal="chartIsHorizontal"
@@ -17,11 +18,15 @@
 <script setup>
 import { ref } from 'vue'
 import TopolaWrapper from 'components/TopolaWrapper.vue'
-// import TopolaSettings from 'components/TopolaSettings.vue'
+import TopolaIndividual from 'components/TopolaIndividual.vue'
 // import topolaJsonData from 'src/data/MinimalExampleData.json'
 import topolaJsonData from 'src/data/KennedyFamilyData.json'
 // import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
 import * as topola from 'topola';
+// import { useRouter, useRoute } from 'vue-router'
+// const router = useRouter()
+// const route = useRoute()
+
 defineOptions({
   name: 'TopolaStaticDataPage'
 })
@@ -42,14 +47,5 @@ const props = defineProps({
     default: "HourglassChart"
   },
 })
-// var triggerLayoutChanged = function (horizontalOrNot) {
-//   chartIsHorizontal.value = horizontalOrNot
-// }
-// var triggerRendererChanged = function (newRenderer) {
-//   topolaRenderer.value = newRenderer
-// }
-// var triggerChartTypeChanged = function (newCT) {
-//   topolaChartType.value = newCT
-// }
 // const topolaData = topola.gedcomToJson(topolaGedcomData);
 </script>
