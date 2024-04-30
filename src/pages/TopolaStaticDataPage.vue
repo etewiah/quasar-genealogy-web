@@ -2,14 +2,14 @@
   <q-page class="flex">
     <div class="row max-ctr"
          style="">
-      <div>
+      <!-- <div>
         <TopolaSettings :topolaRenderer="topolaRenderer"
                         :topolaChartType="topolaChartType"
                         :chartIsHorizontal="chartIsHorizontal"
                         @triggerLayoutChanged="triggerLayoutChanged"
                         @triggerRendererChanged="triggerRendererChanged"
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
-      </div>
+      </div> -->
       <div class="q-my-lg q-mx-md col-xs-12">
         <TopolaWrapper :topolaData="topolaJsonData"
                        :chartIsHorizontal="chartIsHorizontal"
@@ -23,21 +23,31 @@
 <script setup>
 import { ref } from 'vue'
 import TopolaWrapper from 'components/TopolaWrapper.vue'
-import TopolaSettings from 'components/TopolaSettings.vue'
+// import TopolaSettings from 'components/TopolaSettings.vue'
 // import topolaJsonData from 'src/data/MinimalExampleData.json'
 import topolaJsonData from 'src/data/KennedyFamilyData.json'
 // import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
 import * as topola from 'topola';
-import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
 defineOptions({
   name: 'TopolaStaticDataPage'
 })
 
-const { getLocalTopolaConfig } = useLocalDataForTopola()
-let topolaConfig = getLocalTopolaConfig()
-var topolaChartType = ref(topolaConfig.topolaChartType)
-var topolaRenderer = ref(topolaConfig.topolaRenderer)
-var chartIsHorizontal = ref(topolaConfig.chartIsHorizontal)
+const props = defineProps({
+  chartIsHorizontal: {
+    type: Boolean,
+    required: true
+  },
+  topolaRenderer: {
+    type: String,
+    required: false,
+    default: "DetailedRenderer"
+  },
+  topolaChartType: {
+    type: String,
+    required: false,
+    default: "HourglassChart"
+  },
+})
 var triggerLayoutChanged = function (horizontalOrNot) {
   chartIsHorizontal.value = horizontalOrNot
 }

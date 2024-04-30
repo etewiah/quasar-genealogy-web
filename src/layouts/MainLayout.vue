@@ -22,73 +22,98 @@
               bordered>
       <q-list>
         <q-item-label header>
-          Essential Links
+          Settings
         </q-item-label>
+        <TopolaSettings :topolaRenderer="topolaRenderer"
+                        :topolaChartType="topolaChartType"
+                        :chartIsHorizontal="chartIsHorizontal"
+                        @triggerLayoutChanged="triggerLayoutChanged"
+                        @triggerRendererChanged="triggerRendererChanged"
+                        @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
 
-        <EssentialLink v-for="link in linksList"
+        <!-- <EssentialLink v-for="link in linksList"
                        :key="link.title"
-                       v-bind="link" />
+                       v-bind="link" /> -->
       </q-list>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view :chartIsHorizontal="chartIsHorizontal"
+                   :topolaRenderer="topolaRenderer"
+                   :topolaChartType="topolaChartType" />
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import TopolaSettings from 'components/TopolaSettings.vue'
+// import EssentialLink from 'components/EssentialLink.vue'
+import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
 
 defineOptions({
   name: 'MainLayout'
 })
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+const { getLocalTopolaConfig } = useLocalDataForTopola()
+let topolaConfig = getLocalTopolaConfig()
+var topolaChartType = ref(topolaConfig.topolaChartType)
+var topolaRenderer = ref(topolaConfig.topolaRenderer)
+var chartIsHorizontal = ref(topolaConfig.chartIsHorizontal)
+var triggerLayoutChanged = function (horizontalOrNot) {
+  chartIsHorizontal.value = horizontalOrNot
+}
+var triggerRendererChanged = function (newRenderer) {
+  topolaRenderer.value = newRenderer
+}
+var triggerChartTypeChanged = function (newCT) {
+  topolaChartType.value = newCT
+}
+
+// const linksList = [
+//   {
+//     title: 'Docs',
+//     caption: 'quasar.dev',
+//     icon: 'school',
+//     link: 'https://quasar.dev'
+//   },
+//   {
+//     title: 'Github',
+//     caption: 'github.com/quasarframework',
+//     icon: 'code',
+//     link: 'https://github.com/quasarframework'
+//   },
+//   {
+//     title: 'Discord Chat Channel',
+//     caption: 'chat.quasar.dev',
+//     icon: 'chat',
+//     link: 'https://chat.quasar.dev'
+//   },
+//   {
+//     title: 'Forum',
+//     caption: 'forum.quasar.dev',
+//     icon: 'record_voice_over',
+//     link: 'https://forum.quasar.dev'
+//   },
+//   {
+//     title: 'Twitter',
+//     caption: '@quasarframework',
+//     icon: 'rss_feed',
+//     link: 'https://twitter.quasar.dev'
+//   },
+//   {
+//     title: 'Facebook',
+//     caption: '@QuasarFramework',
+//     icon: 'public',
+//     link: 'https://facebook.quasar.dev'
+//   },
+//   {
+//     title: 'Quasar Awesome',
+//     caption: 'Community Quasar projects',
+//     icon: 'favorite',
+//     link: 'https://awesome.quasar.dev'
+//   }
+// ]
 
 const leftDrawerOpen = ref(false)
 

@@ -20,7 +20,8 @@ export default {
       type: String,
       required: true,
       validator: function (value) {
-        return ['AncestorChart', 'FancyChart', 'RelativesChart', 'HourglassChart'].includes(value);
+        return ['AncestorChart', 'DescendantChart', 'KinshipChart',
+          'FancyChart', 'RelativesChart', 'HourglassChart'].includes(value);
       }
     },
     renderer: {
