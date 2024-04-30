@@ -3,50 +3,10 @@
     <div class="row max-ctr"
          style="">
       <div>
-        <div>
-          <div class="q-ma-md col-xs-12">
-            <div>Chart Type:</div>
-          </div>
-          <div class="q-ma-md col-xs-12">
-            <div class="q-gutter-sm">
-              <q-radio dense
-                       v-model="topolaChartType"
-                       val="RelativesChart"
-                       label="RelativesChart" />
-              <q-radio dense
-                       v-model="topolaChartType"
-                       val="FancyChart"
-                       label="FancyChart" />
-              <q-radio dense
-                       v-model="topolaChartType"
-                       val="HourglassChart"
-                       label="HourglassChart" />
-              <q-radio dense
-                       v-model="topolaChartType"
-                       val="AncestorChart"
-                       label="AncestorChart" />
-            </div>
-          </div>
-          <div class="q-ma-md col-xs-12">
-            <div>Renderer:</div>
-          </div>
-          <div class="q-ma-md col-xs-12">
-            <div class="q-gutter-sm">
-              <q-radio dense
-                       v-model="topolaRenderer"
-                       val="DetailedRenderer"
-                       label="DetailedRenderer" />
-              <q-radio dense
-                       v-model="topolaRenderer"
-                       val="SimpleRenderer"
-                       label="SimpleRenderer" />
-              <q-radio dense
-                       v-model="topolaRenderer"
-                       val="CircleRenderer"
-                       label="CircleRenderer" />
-            </div>
-          </div>
-        </div>
+        <TopolaSettings :topolaRenderer="topolaRenderer"
+                        :topolaChartType="topolaChartType"
+                        @triggerRendererChanged="triggerRendererChanged"
+                        @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
       </div>
       <div class="q-my-lg q-mx-md col-xs-12">
         <TopolaWrapper :topolaData="topolaData"
@@ -60,6 +20,7 @@
 <script setup>
 import { ref } from 'vue'
 import TopolaWrapper from 'components/TopolaWrapper.vue'
+import TopolaSettings from 'components/TopolaSettings.vue'
 // import topolaJsonData from 'src/data/MinimalExampleData.json'
 import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
 import * as topola from 'topola';
@@ -69,5 +30,12 @@ defineOptions({
 });
 var topolaChartType = ref('HourglassChart')
 var topolaRenderer = ref('DetailedRenderer')
+
+var triggerRendererChanged = function (newRenderer) {
+  topolaRenderer.value = newRenderer
+}
+var triggerChartTypeChanged = function (newCT) {
+  topolaChartType.value = newCT
+}
 const topolaData = topola.gedcomToJson(topolaGedcomData);
 </script>
