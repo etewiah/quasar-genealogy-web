@@ -68,6 +68,6 @@ defineOptions({
   name: 'TopolaStaticDataPage'
 });
 var topolaChartType = ref('HourglassChart')
-var topolaRenderer = ref('SimpleRenderer')
+var topolaRenderer = ref('DetailedRenderer')
 const topolaData = topola.gedcomToJson(topolaGedcomData);
 </script>

@@ -29,10 +29,16 @@ export default {
     }
   },
   watch: {
+    "$route.query.personID": {
+      handler: function (newVal) {
+        if (newVal && newVal.length > 0) {
+          this.updateChart()
+        }
+      },
+    },
     chartType: {
       handler: function (newVal) {
         if (newVal && newVal.length > 0) {
-          this.$refs.graphElement.innerHTML = ""
           this.updateChart()
         }
       },
@@ -40,25 +46,32 @@ export default {
     renderer: {
       handler: function (newVal) {
         if (newVal && newVal.length > 0) {
-          this.$refs.graphElement.innerHTML = ""
           this.updateChart()
         }
       },
     },
+  },
+  computed: {
   },
   methods: {
     topolaIndiCallback(info, moreInfor) { },
     // topolaFamCallback(info, info2) { },
     topolaHrefFunc(idInfo) { },
     updateChart() {
+      this.$refs.graphElement.innerHTML = ""
+      let currentPersonID = this.$route.query.personID
+      let focusDetails = {}
+      if (currentPersonID) {
+        focusDetails.startIndi = currentPersonID
+      }
       const chart = topola.createChart({
-        json: this.$props.topolaData,
+        json: this.topolaData,
         animate: true,
         svgSelector: '#graph',
         chartType: topola[this.$props.chartType],
         renderer: topola[this.$props.renderer],
-        indiUrl: '/#static-data?tree=tree381&personID=${id}',
-        famUrl: '/#static-data?tree=tree381&familyID=${id}',
+        indiUrl: '/#static-data?personID=${id}',
+        famUrl: '/#static-data?familyID=${id}',
         indiHrefFunc: this.topolaHrefFunc,
         famHrefFunc: this.topolaHrefFunc,
         // indiHrefFunc?: (id: string) => string;
@@ -73,7 +86,7 @@ export default {
         // famCallback?: (id: FamInfo) => void;
         updateSvgSize: true,
       });
-      chart.render();
+      chart.render(focusDetails);
     }
   },
   mounted() {
