@@ -25,12 +25,15 @@ import TopolaSettings from 'components/TopolaSettings.vue'
 import topolaJsonData from 'src/data/KennedyFamilyData.json'
 // import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
 import * as topola from 'topola';
-
+import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
 defineOptions({
   name: 'TopolaStaticDataPage'
-});
-var topolaChartType = ref('HourglassChart')
-var topolaRenderer = ref('DetailedRenderer')
+})
+
+const { getLocalTopolaConfig } = useLocalDataForTopola()
+let topolaConfig = getLocalTopolaConfig()
+var topolaChartType = ref(topolaConfig.topolaChartType)
+var topolaRenderer = ref(topolaConfig.topolaRenderer)
 
 var triggerRendererChanged = function (newRenderer) {
   topolaRenderer.value = newRenderer

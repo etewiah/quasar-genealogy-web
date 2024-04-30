@@ -52,17 +52,25 @@
   </div>
 </template>
 <script>
+import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
 export default {
+  setup(props) {
+    const { updateLocalConfig } = useLocalDataForTopola()
+    return {
+      updateLocalConfig,
+    }
+  },
   data: () => ({
     // topolaChartType: "HourglassChart",
-    // topolaRenderer: "DetailedRenderer",
   }),
   methods: {
     triggerRendererChanged(newRenderer) {
+      this.updateLocalConfig("topolaRenderer", newRenderer)
       this.$emit("triggerRendererChanged", newRenderer)
     },
-    triggerChartTypeChanged(newRenderer) {
-      this.$emit("triggerChartTypeChanged", newRenderer)
+    triggerChartTypeChanged(newCT) {
+      this.updateLocalConfig("topolaChartType", newCT)
+      this.$emit("triggerChartTypeChanged", newCT)
     }
   },
   props: {
