@@ -60,39 +60,14 @@
 <script setup>
 import { ref } from 'vue'
 import TopolaWrapper from 'components/TopolaWrapper.vue'
+// import topolaJsonData from 'src/data/MinimalExampleData.json'
+import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
+import * as topola from 'topola';
+
 defineOptions({
   name: 'TopolaStaticDataPage'
 });
 var topolaChartType = ref('HourglassChart')
 var topolaRenderer = ref('SimpleRenderer')
-const topolaData = {
-  indis: [
-    {
-      id: 'I1',
-      firstName: 'John',
-      lastName: 'Smith',
-      famc: 'F1',
-    },
-    {
-      id: 'I2',
-      firstName: 'Peter',
-      lastName: 'Smith',
-      fams: ['F1'],
-    },
-    {
-      id: 'I3',
-      firstName: 'Laura',
-      lastName: 'Abbot',
-      fams: ['F1'],
-    },
-  ],
-  fams: [
-    {
-      id: 'F1',
-      husb: 'I2',
-      wife: 'I3',
-      children: ['I1'],
-    },
-  ],
-};
+const topolaData = topola.gedcomToJson(topolaGedcomData);
 </script>

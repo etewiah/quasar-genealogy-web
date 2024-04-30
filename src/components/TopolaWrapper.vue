@@ -63,8 +63,9 @@ export default {
         famHrefFunc: this.topolaHrefFunc,
         // indiHrefFunc?: (id: string) => string;
         // famHrefFunc?: (id: string) => string;
-        horizontal: true,
-        colors: topola.ChartColors.COLOR_BY_SEX,
+        horizontal: false,
+        // colors: topola.ChartColors.COLOR_BY_SEX,
+        colors: topola.ChartColors.COLOR_BY_GENERATION,
         // AncestorChart CircleRenderer
         indiCallback: this.topolaIndiCallback,
         // famCallback: this.topolaFamCallback,
