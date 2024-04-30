@@ -9,7 +9,7 @@
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
       </div>
       <div class="q-my-lg q-mx-md col-xs-12">
-        <TopolaWrapper :topolaData="topolaData"
+        <TopolaWrapper :topolaData="topolaJsonData"
                        :chartType="topolaChartType"
                        :renderer="topolaRenderer" />
       </div>
@@ -22,7 +22,8 @@ import { ref } from 'vue'
 import TopolaWrapper from 'components/TopolaWrapper.vue'
 import TopolaSettings from 'components/TopolaSettings.vue'
 // import topolaJsonData from 'src/data/MinimalExampleData.json'
-import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
+import topolaJsonData from 'src/data/KennedyFamilyData.json'
+// import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
 import * as topola from 'topola';
 
 defineOptions({
@@ -37,5 +38,5 @@ var triggerRendererChanged = function (newRenderer) {
 var triggerChartTypeChanged = function (newCT) {
   topolaChartType.value = newCT
 }
-const topolaData = topola.gedcomToJson(topolaGedcomData);
+// const topolaData = topola.gedcomToJson(topolaGedcomData);
 </script>
