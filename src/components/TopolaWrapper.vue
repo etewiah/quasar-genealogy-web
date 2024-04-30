@@ -26,6 +26,10 @@ export default {
     renderer: {
       type: String,
       required: true
+    },
+    chartIsHorizontal: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -41,6 +45,11 @@ export default {
         if (newVal && newVal.length > 0) {
           this.updateChart()
         }
+      },
+    },
+    chartIsHorizontal: {
+      handler: function (newVal) {
+        this.updateChart()
       },
     },
     renderer: {
@@ -76,7 +85,7 @@ export default {
         famHrefFunc: this.topolaHrefFunc,
         // indiHrefFunc?: (id: string) => string;
         // famHrefFunc?: (id: string) => string;
-        horizontal: false,
+        horizontal: this.chartIsHorizontal,
         // colors: topola.ChartColors.COLOR_BY_SEX,
         colors: topola.ChartColors.COLOR_BY_GENERATION,
         // AncestorChart CircleRenderer

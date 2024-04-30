@@ -12,6 +12,7 @@ export default function () {
       topolaConfig || {
         topolaChartType: 'HourglassChart',
         topolaRenderer: 'DetailedRenderer',
+        chartIsHorizontal: false,
       }
     )
   }

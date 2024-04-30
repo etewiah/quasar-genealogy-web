@@ -8,6 +8,21 @@
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaChartType"
+                 val="AncestorChart"
+                 label="AncestorChart" />
+        <q-radio dense
+                 @update:model-value="triggerChartTypeChanged"
+                 :modelValue="topolaChartType"
+                 val="KinshipChart"
+                 label="KinshipChart" />
+        <q-radio dense
+                 @update:model-value="triggerChartTypeChanged"
+                 :modelValue="topolaChartType"
+                 val="DescendantChart"
+                 label="DescendantChart" />
+        <q-radio dense
+                 @update:model-value="triggerChartTypeChanged"
+                 :modelValue="topolaChartType"
                  val="RelativesChart"
                  label="RelativesChart" />
         <q-radio dense
@@ -20,11 +35,6 @@
                  :modelValue="topolaChartType"
                  val="HourglassChart"
                  label="HourglassChart" />
-        <q-radio dense
-                 @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaChartType"
-                 val="AncestorChart"
-                 label="AncestorChart" />
       </div>
     </div>
     <div class="q-ma-md col-xs-12">
@@ -49,6 +59,23 @@
                  label="CircleRenderer" />
       </div>
     </div>
+    <div class="q-ma-md col-xs-12">
+      <div>Orientation:</div>
+    </div>
+    <div class="q-ma-md col-xs-12">
+      <div class="q-gutter-sm">
+        <q-radio dense
+                 @update:model-value="triggerLayoutChanged"
+                 :modelValue="chartIsHorizontal"
+                 :val="true"
+                 label="Horizontal" />
+        <q-radio dense
+                 @update:model-value="triggerLayoutChanged"
+                 :modelValue="chartIsHorizontal"
+                 :val="false"
+                 label="Vertical" />
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -64,6 +91,10 @@ export default {
     // topolaChartType: "HourglassChart",
   }),
   methods: {
+    triggerLayoutChanged(horizontalOrNot) {
+      this.updateLocalConfig("chartIsHorizontal", horizontalOrNot)
+      this.$emit("triggerLayoutChanged", horizontalOrNot)
+    },
     triggerRendererChanged(newRenderer) {
       this.updateLocalConfig("topolaRenderer", newRenderer)
       this.$emit("triggerRendererChanged", newRenderer)
@@ -84,6 +115,10 @@ export default {
       required: false,
       default: "HourglassChart"
     },
+    chartIsHorizontal: {
+      type: Boolean,
+      default: true
+    }
   },
   mounted() { },
 }
