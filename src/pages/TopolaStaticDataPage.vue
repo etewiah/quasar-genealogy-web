@@ -3,12 +3,6 @@
     <div class="row max-ctr"
          style="">
       <!-- <div>
-        <TopolaSettings :topolaRenderer="topolaRenderer"
-                        :topolaChartType="topolaChartType"
-                        :chartIsHorizontal="chartIsHorizontal"
-                        @triggerLayoutChanged="triggerLayoutChanged"
-                        @triggerRendererChanged="triggerRendererChanged"
-                        @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
       </div> -->
       <div class="q-my-lg q-mx-md col-xs-12">
         <TopolaWrapper :topolaData="topolaJsonData"
@@ -48,14 +42,14 @@ const props = defineProps({
     default: "HourglassChart"
   },
 })
-var triggerLayoutChanged = function (horizontalOrNot) {
-  chartIsHorizontal.value = horizontalOrNot
-}
-var triggerRendererChanged = function (newRenderer) {
-  topolaRenderer.value = newRenderer
-}
-var triggerChartTypeChanged = function (newCT) {
-  topolaChartType.value = newCT
-}
+// var triggerLayoutChanged = function (horizontalOrNot) {
+//   chartIsHorizontal.value = horizontalOrNot
+// }
+// var triggerRendererChanged = function (newRenderer) {
+//   topolaRenderer.value = newRenderer
+// }
+// var triggerChartTypeChanged = function (newCT) {
+//   topolaChartType.value = newCT
+// }
 // const topolaData = topola.gedcomToJson(topolaGedcomData);
 </script>

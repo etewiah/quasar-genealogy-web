@@ -10,7 +10,7 @@
                @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
-          Quasar App
+          Quasar Topola Viewer App
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -30,10 +30,6 @@
                         @triggerLayoutChanged="triggerLayoutChanged"
                         @triggerRendererChanged="triggerRendererChanged"
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
-
-        <!-- <EssentialLink v-for="link in linksList"
-                       :key="link.title"
-                       v-bind="link" /> -->
       </q-list>
     </q-drawer>
 
