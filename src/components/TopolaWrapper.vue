@@ -80,8 +80,8 @@ export default {
         svgSelector: '#graph',
         chartType: topola[this.$props.chartType],
         renderer: topola[this.$props.renderer],
-        indiUrl: '/#static-data?personID=${id}',
-        famUrl: '/#static-data?familyID=${id}',
+        indiUrl: '/static-data?personID=${id}',
+        famUrl: '/static-data?familyID=${id}',
         indiHrefFunc: this.topolaHrefFunc,
         famHrefFunc: this.topolaHrefFunc,
         // indiHrefFunc?: (id: string) => string;
