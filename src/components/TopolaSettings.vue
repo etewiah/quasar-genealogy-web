@@ -10,21 +10,21 @@
                  :modelValue="topolaChartType"
                  val="AncestorChart"
                  label="AncestorChart" />
-        <q-radio dense
+        <!-- <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaChartType"
                  val="KinshipChart"
-                 label="KinshipChart" />
+                 label="KinshipChart" /> -->
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaChartType"
                  val="DescendantChart"
                  label="DescendantChart" />
-        <q-radio dense
+        <!-- <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaChartType"
                  val="RelativesChart"
-                 label="RelativesChart" />
+                 label="RelativesChart" /> -->
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaChartType"
@@ -47,11 +47,11 @@
                  :modelValue="topolaRenderer"
                  val="DetailedRenderer"
                  label="DetailedRenderer" />
-        <q-radio dense
+        <!-- <q-radio dense
                  @update:model-value="triggerRendererChanged"
                  :modelValue="topolaRenderer"
                  val="SimpleRenderer"
-                 label="SimpleRenderer" />
+                 label="SimpleRenderer" /> -->
         <q-radio dense
                  @update:model-value="triggerRendererChanged"
                  :modelValue="topolaRenderer"
