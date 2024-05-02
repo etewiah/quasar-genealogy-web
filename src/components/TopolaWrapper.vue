@@ -12,6 +12,9 @@ import * as topola from 'topola';
 
 export default {
   props: {
+    focusedIndiForGraph: {
+      type: Object
+    },
     topolaData: {
       type: Object,
       required: true
@@ -73,10 +76,9 @@ export default {
     topolaHrefFunc(idInfo) { },
     updateChart() {
       // this.$refs.graphElement.innerHTML = ""
-      let currentPersonID = this.$route.query.personID
       let focusDetails = {}
-      if (currentPersonID) {
-        focusDetails.startIndi = currentPersonID
+      if (this.focusedIndiForGraph) {
+        focusDetails.startIndi = this.focusedIndiForGraph.id
       }
       if (this.topolaChart.options.horizontal !== this.chartIsHorizontal) {
         this.topolaChart.options.horizontal = this.chartIsHorizontal
@@ -95,10 +97,10 @@ export default {
     },
     initiateChart() {
       this.$refs.graphElement.innerHTML = ""
-      let currentPersonID = this.$route.query.personID
+      // let currentPersonID = this.$route.query.personID
       let focusDetails = {}
-      if (currentPersonID) {
-        focusDetails.startIndi = currentPersonID
+      if (this.focusedIndiForGraph) {
+        focusDetails.startIndi = this.focusedIndiForGraph.id
       }
       // 'json', 'animate', 'svgSelector', 'chartType', 'renderer', 'indiUrl', 'famUrl', 'indiHrefFunc', 'famHrefFunc', 'horizontal', 'colors', 'indiCallback', 'updateSvgSize'
       this.topolaChartData = {
