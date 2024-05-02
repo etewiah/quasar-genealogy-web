@@ -63,18 +63,45 @@ export default {
   },
   computed: {
   },
+  data: () => ({
+    topolaChart: null,
+    topolaChartData: {}
+  }),
   methods: {
     topolaIndiCallback(info, moreInfor) { },
     // topolaFamCallback(info, info2) { },
     topolaHrefFunc(idInfo) { },
     updateChart() {
+      // this.$refs.graphElement.innerHTML = ""
+      let currentPersonID = this.$route.query.personID
+      let focusDetails = {}
+      if (currentPersonID) {
+        focusDetails.startIndi = currentPersonID
+      }
+      if (this.topolaChart.options.horizontal !== this.chartIsHorizontal) {
+        this.topolaChart.options.horizontal = this.chartIsHorizontal
+        this.topolaChart.render(focusDetails);
+
+      } else {
+        this.$refs.graphElement.innerHTML = ""
+        // this.topolaChartData.chartType = topola[this.$props.chartType]
+        // this.topolaChartData.renderer = topola[this.$props.renderer]
+        this.topolaChart.options.chartType = topola[this.$props.chartType]
+        this.topolaChart.options.renderer = topola[this.$props.renderer]
+        this.topolaChart.render(focusDetails);
+      }
+
+
+    },
+    initiateChart() {
       this.$refs.graphElement.innerHTML = ""
       let currentPersonID = this.$route.query.personID
       let focusDetails = {}
       if (currentPersonID) {
         focusDetails.startIndi = currentPersonID
       }
-      const chart = topola.createChart({
+      // 'json', 'animate', 'svgSelector', 'chartType', 'renderer', 'indiUrl', 'famUrl', 'indiHrefFunc', 'famHrefFunc', 'horizontal', 'colors', 'indiCallback', 'updateSvgSize'
+      this.topolaChartData = {
         json: this.topolaData,
         animate: true,
         svgSelector: '#graph',
@@ -95,12 +122,13 @@ export default {
         // indiCallback?: (id: IndiInfo) => void;
         // famCallback?: (id: FamInfo) => void;
         updateSvgSize: true,
-      });
-      chart.render(focusDetails);
+      }
+      this.topolaChart = topola.createChart(this.topolaChartData);
+      this.topolaChart.render(focusDetails);
     }
   },
   mounted() {
-    this.updateChart()
+    this.initiateChart()
   },
 }
 </script>
