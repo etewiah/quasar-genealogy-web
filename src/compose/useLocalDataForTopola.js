@@ -12,6 +12,8 @@ export default function () {
       topolaConfig || {
         topolaChartType: 'HourglassChart',
         topolaRenderer: 'DetailedRenderer',
+        chartColors: 'COLOR_BY_GENERATION',
+        // chartColors: 'COLOR_BY_SEX',
         chartIsHorizontal: false,
       }
     )

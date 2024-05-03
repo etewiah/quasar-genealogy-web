@@ -7,6 +7,7 @@
       </div>
       <div class="q-my-lg q-mx-md col-xs-12">
         <TopolaWrapper :topolaData="topolaJsonData"
+                       :topolaConfig="topolaConfig"
                        :focusedIndiForGraph="focusedIndiForGraph"
                        :chartIsHorizontal="chartIsHorizontal"
                        :chartType="topolaChartType"
@@ -36,6 +37,9 @@ defineOptions({
 })
 
 const props = defineProps({
+  topolaConfig: {
+    type: Object,
+  },
   chartIsHorizontal: {
     type: Boolean,
     required: true

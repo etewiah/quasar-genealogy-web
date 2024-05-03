@@ -36,7 +36,8 @@
     <q-page-container>
       <router-view :chartIsHorizontal="chartIsHorizontal"
                    :topolaRenderer="topolaRenderer"
-                   :topolaChartType="topolaChartType" />
+                   :topolaChartType="topolaChartType"
+                   :topolaConfig="topolaConfig" />
     </q-page-container>
   </q-layout>
 </template>

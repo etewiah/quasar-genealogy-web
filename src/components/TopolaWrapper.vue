@@ -31,6 +31,13 @@ export default {
       type: String,
       required: true
     },
+    // chartColors: {
+    //   type: String,
+    //   default: "COLOR_BY_SEX"
+    // },
+    topolaConfig: {
+      type: Object,
+    },
     chartIsHorizontal: {
       type: Boolean,
       default: true
@@ -102,11 +109,13 @@ export default {
       if (this.focusedIndiForGraph) {
         focusDetails.startIndi = this.focusedIndiForGraph.id
       }
+      // let startFam = this.topolaData.fams[1]
       // 'json', 'animate', 'svgSelector', 'chartType', 'renderer', 'indiUrl', 'famUrl', 'indiHrefFunc', 'famHrefFunc', 'horizontal', 'colors', 'indiCallback', 'updateSvgSize'
       this.topolaChartData = {
         json: this.topolaData,
         animate: true,
         svgSelector: '#graph',
+        // startFam: startFam,
         chartType: topola[this.$props.chartType],
         renderer: topola[this.$props.renderer],
         indiUrl: '/static-data?personID=${id}',
@@ -116,8 +125,8 @@ export default {
         // indiHrefFunc?: (id: string) => string;
         // famHrefFunc?: (id: string) => string;
         horizontal: this.chartIsHorizontal,
-        // colors: topola.ChartColors.COLOR_BY_SEX,
-        colors: topola.ChartColors.COLOR_BY_GENERATION,
+        colors: topola.ChartColors[this.topolaConfig.chartColors],
+        // colors: topola.ChartColors.COLOR_BY_GENERATION,
         // AncestorChart CircleRenderer
         indiCallback: this.topolaIndiCallback,
         // famCallback: this.topolaFamCallback,
