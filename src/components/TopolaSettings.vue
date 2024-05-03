@@ -44,17 +44,17 @@
       <div class="q-gutter-sm">
         <q-radio dense
                  @update:model-value="triggerRendererChanged"
-                 :modelValue="topolaRenderer"
+                 :modelValue="topolaConfig.topolaRenderer"
                  val="DetailedRenderer"
                  label="DetailedRenderer" />
         <q-radio dense
                  @update:model-value="triggerRendererChanged"
-                 :modelValue="topolaRenderer"
+                 :modelValue="topolaConfig.topolaRenderer"
                  val="SimpleRenderer"
                  label="SimpleRenderer" />
         <q-radio dense
                  @update:model-value="triggerRendererChanged"
-                 :modelValue="topolaRenderer"
+                 :modelValue="topolaConfig.topolaRenderer"
                  val="CircleRenderer"
                  label="CircleRenderer" />
       </div>
@@ -108,20 +108,20 @@ export default {
     topolaConfig: {
       type: Object,
     },
-    topolaRenderer: {
-      type: String,
-      required: false,
-      default: "DetailedRenderer"
-    },
+    // topolaRenderer: {
+    //   type: String,
+    //   required: false,
+    //   default: "DetailedRenderer"
+    // },
     topolaChartType: {
       type: String,
       required: false,
       default: "HourglassChart"
     },
-    chartIsHorizontal: {
-      type: Boolean,
-      default: true
-    }
+    // chartIsHorizontal: {
+    //   type: Boolean,
+    //   default: true
+    // }
   },
   mounted() { },
 }

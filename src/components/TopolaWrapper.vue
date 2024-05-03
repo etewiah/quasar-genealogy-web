@@ -27,10 +27,10 @@ export default {
           'FancyChart', 'RelativesChart', 'HourglassChart'].includes(value);
       }
     },
-    renderer: {
-      type: String,
-      required: true
-    },
+    // renderer: {
+    //   type: String,
+    //   required: true
+    // },
     topolaConfig: {
       type: Object,
     },
@@ -65,13 +65,13 @@ export default {
         this.updateChart()
       },
     },
-    renderer: {
-      handler: function (newVal) {
-        if (newVal && newVal.length > 0) {
-          this.updateChart()
-        }
-      },
-    },
+    // renderer: {
+    //   handler: function (newVal) {
+    //     if (newVal && newVal.length > 0) {
+    //       this.updateChart()
+    //     }
+    //   },
+    // },
   },
   computed: {
   },
@@ -94,13 +94,10 @@ export default {
         this.topolaChart.render(focusDetails);
       } else {
         this.$refs.graphElement.innerHTML = ""
-        // this.topolaChartData.chartType = topola[this.$props.chartType]
-        // this.topolaChartData.renderer = topola[this.$props.renderer]
         this.topolaChart.options.chartType = topola[this.$props.chartType]
-        this.topolaChart.options.renderer = topola[this.$props.renderer]
+        this.topolaChart.options.renderer = topola[this.topolaConfig.topolaRenderer]
         this.topolaChart.render(focusDetails);
       }
-
 
     },
     initiateChart() {
@@ -118,7 +115,7 @@ export default {
         svgSelector: '#graph',
         // startFam: startFam,
         chartType: topola[this.$props.chartType],
-        renderer: topola[this.$props.renderer],
+        renderer: topola[this.topolaConfig.topolaRenderer],
         indiUrl: '/static-data?personID=${id}',
         famUrl: '/static-data?familyID=${id}',
         indiHrefFunc: this.topolaHrefFunc,
