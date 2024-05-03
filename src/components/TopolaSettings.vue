@@ -7,32 +7,32 @@
       <div class="q-gutter-sm">
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaChartType"
+                 :modelValue="topolaConfig.topolaChartType"
                  val="AncestorChart"
                  label="AncestorChart" />
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaChartType"
+                 :modelValue="topolaConfig.topolaChartType"
                  val="KinshipChart"
                  label="KinshipChart" />
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaChartType"
+                 :modelValue="topolaConfig.topolaChartType"
                  val="DescendantChart"
                  label="DescendantChart" />
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaChartType"
+                 :modelValue="topolaConfig.topolaChartType"
                  val="RelativesChart"
                  label="RelativesChart" />
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaChartType"
+                 :modelValue="topolaConfig.topolaChartType"
                  val="FancyChart"
                  label="FancyChart" />
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaChartType"
+                 :modelValue="topolaConfig.topolaChartType"
                  val="HourglassChart"
                  label="HourglassChart" />
       </div>
@@ -108,20 +108,11 @@ export default {
     topolaConfig: {
       type: Object,
     },
-    // topolaRenderer: {
+    // topolaChartType: {
     //   type: String,
     //   required: false,
-    //   default: "DetailedRenderer"
+    //   default: "HourglassChart"
     // },
-    topolaChartType: {
-      type: String,
-      required: false,
-      default: "HourglassChart"
-    },
-    // chartIsHorizontal: {
-    //   type: Boolean,
-    //   default: true
-    // }
   },
   mounted() { },
 }

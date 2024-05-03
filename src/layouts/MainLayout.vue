@@ -24,9 +24,7 @@
         <q-item-label header>
           Settings
         </q-item-label>
-        <TopolaSettings :topolaRenderer="topolaConfig.topolaRenderer"
-                        :topolaChartType="topolaChartType"
-                        :topolaConfig="topolaConfig"
+        <TopolaSettings :topolaConfig="topolaConfig"
                         @triggerLayoutChanged="triggerLayoutChanged"
                         @triggerRendererChanged="triggerRendererChanged"
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
@@ -34,9 +32,7 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view :topolaRenderer="topolaConfig.topolaRenderer"
-                   :topolaChartType="topolaChartType"
-                   :topolaConfig="topolaConfig" />
+      <router-view :topolaConfig="topolaConfig" />
     </q-page-container>
   </q-layout>
 </template>
@@ -54,8 +50,6 @@ defineOptions({
 const { getLocalTopolaConfig } = useLocalDataForTopola()
 let topolaConfig = ref(getLocalTopolaConfig())
 var topolaChartType = ref(topolaConfig.value.topolaChartType)
-// var topolaRenderer = ref(topolaConfig.value.topolaRenderer)
-// var chartIsHorizontal = ref(topolaConfig.value.chartIsHorizontal)
 var triggerLayoutChanged = function (horizontalOrNot) {
   topolaConfig.value.chartIsHorizontal = horizontalOrNot
   // chartIsHorizontal.value = horizontalOrNot
@@ -65,7 +59,8 @@ var triggerRendererChanged = function (newRenderer) {
   // topolaRenderer.value = newRenderer
 }
 var triggerChartTypeChanged = function (newCT) {
-  topolaChartType.value = newCT
+  topolaConfig.value.topolaChartType = newCT
+  // topolaChartType.value = newCT
 }
 
 // const linksList = [

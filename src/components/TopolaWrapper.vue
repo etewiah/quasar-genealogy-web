@@ -19,35 +19,20 @@ export default {
       type: Object,
       required: true
     },
-    chartType: {
-      type: String,
-      required: true,
-      validator: function (value) {
-        return ['AncestorChart', 'DescendantChart', 'KinshipChart',
-          'FancyChart', 'RelativesChart', 'HourglassChart'].includes(value);
-      }
-    },
-    // renderer: {
+    // chartType: {
     //   type: String,
-    //   required: true
+    //   required: true,
+    //   validator: function (value) {
+    //     return ['AncestorChart', 'DescendantChart', 'KinshipChart',
+    //       'FancyChart', 'RelativesChart', 'HourglassChart'].includes(value);
+    //   }
     // },
     topolaConfig: {
       type: Object,
     },
-    // chartIsHorizontal: {
-    //   type: Boolean,
-    //   default: true
-    // }
   },
   watch: {
     "$route.query.personID": {
-      handler: function (newVal) {
-        if (newVal && newVal.length > 0) {
-          this.updateChart()
-        }
-      },
-    },
-    chartType: {
       handler: function (newVal) {
         if (newVal && newVal.length > 0) {
           this.updateChart()
@@ -65,13 +50,6 @@ export default {
         this.updateChart()
       },
     },
-    // renderer: {
-    //   handler: function (newVal) {
-    //     if (newVal && newVal.length > 0) {
-    //       this.updateChart()
-    //     }
-    //   },
-    // },
   },
   computed: {
   },
@@ -94,7 +72,7 @@ export default {
         this.topolaChart.render(focusDetails);
       } else {
         this.$refs.graphElement.innerHTML = ""
-        this.topolaChart.options.chartType = topola[this.$props.chartType]
+        this.topolaChart.options.chartType = topola[this.topolaConfig.topolaChartType]
         this.topolaChart.options.renderer = topola[this.topolaConfig.topolaRenderer]
         this.topolaChart.render(focusDetails);
       }
@@ -114,7 +92,7 @@ export default {
         animate: true,
         svgSelector: '#graph',
         // startFam: startFam,
-        chartType: topola[this.$props.chartType],
+        chartType: topola[this.topolaConfig.topolaChartType],
         renderer: topola[this.topolaConfig.topolaRenderer],
         indiUrl: '/static-data?personID=${id}',
         famUrl: '/static-data?familyID=${id}',

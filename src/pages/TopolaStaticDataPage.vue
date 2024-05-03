@@ -8,8 +8,7 @@
       <div class="q-my-lg q-mx-md col-xs-12">
         <TopolaWrapper :topolaData="topolaJsonData"
                        :topolaConfig="topolaConfig"
-                       :focusedIndiForGraph="focusedIndiForGraph"
-                       :chartType="topolaChartType" />
+                       :focusedIndiForGraph="focusedIndiForGraph" />
       </div>
     </div>
   </q-page>
@@ -38,16 +37,16 @@ const props = defineProps({
   topolaConfig: {
     type: Object,
   },
-  topolaRenderer: {
-    type: String,
-    required: false,
-    default: "DetailedRenderer"
-  },
-  topolaChartType: {
-    type: String,
-    required: false,
-    default: "HourglassChart"
-  },
+  // topolaRenderer: {
+  //   type: String,
+  //   required: false,
+  //   default: "DetailedRenderer"
+  // },
+  // topolaChartType: {
+  //   type: String,
+  //   required: false,
+  //   default: "HourglassChart"
+  // },
 })
 // Function to find the intersection of two arrays
 function intersection(arr1, arr2) {
