@@ -9,7 +9,6 @@
         <TopolaWrapper :topolaData="topolaJsonData"
                        :topolaConfig="topolaConfig"
                        :focusedIndiForGraph="focusedIndiForGraph"
-                       :chartIsHorizontal="chartIsHorizontal"
                        :chartType="topolaChartType"
                        :renderer="topolaRenderer" />
       </div>
@@ -40,10 +39,10 @@ const props = defineProps({
   topolaConfig: {
     type: Object,
   },
-  chartIsHorizontal: {
-    type: Boolean,
-    required: true
-  },
+  // chartIsHorizontal: {
+  //   type: Boolean,
+  //   required: true
+  // },
   topolaRenderer: {
     type: String,
     required: false,

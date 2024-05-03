@@ -66,12 +66,12 @@
       <div class="q-gutter-sm">
         <q-radio dense
                  @update:model-value="triggerLayoutChanged"
-                 :modelValue="chartIsHorizontal"
+                 :modelValue="topolaConfig.chartIsHorizontal"
                  :val="true"
                  label="Horizontal" />
         <q-radio dense
                  @update:model-value="triggerLayoutChanged"
-                 :modelValue="chartIsHorizontal"
+                 :modelValue="topolaConfig.chartIsHorizontal"
                  :val="false"
                  label="Vertical" />
       </div>
@@ -105,6 +105,9 @@ export default {
     }
   },
   props: {
+    topolaConfig: {
+      type: Object,
+    },
     topolaRenderer: {
       type: String,
       required: false,

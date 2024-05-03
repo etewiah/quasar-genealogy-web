@@ -31,17 +31,13 @@ export default {
       type: String,
       required: true
     },
-    // chartColors: {
-    //   type: String,
-    //   default: "COLOR_BY_SEX"
-    // },
     topolaConfig: {
       type: Object,
     },
-    chartIsHorizontal: {
-      type: Boolean,
-      default: true
-    }
+    // chartIsHorizontal: {
+    //   type: Boolean,
+    //   default: true
+    // }
   },
   watch: {
     "$route.query.personID": {
@@ -58,7 +54,13 @@ export default {
         }
       },
     },
-    chartIsHorizontal: {
+    // chartIsHorizontal: {
+    //   handler: function (newVal) {
+    //     this.updateChart()
+    //   },
+    // },
+    topolaConfig: {
+      deep: true,
       handler: function (newVal) {
         this.updateChart()
       },
@@ -87,10 +89,9 @@ export default {
       if (this.focusedIndiForGraph) {
         focusDetails.startIndi = this.focusedIndiForGraph.id
       }
-      if (this.topolaChart.options.horizontal !== this.chartIsHorizontal) {
-        this.topolaChart.options.horizontal = this.chartIsHorizontal
+      if (this.topolaChart.options.horizontal !== this.topolaConfig.chartIsHorizontal) {
+        this.topolaChart.options.horizontal = this.topolaConfig.chartIsHorizontal
         this.topolaChart.render(focusDetails);
-
       } else {
         this.$refs.graphElement.innerHTML = ""
         // this.topolaChartData.chartType = topola[this.$props.chartType]
@@ -124,7 +125,7 @@ export default {
         famHrefFunc: this.topolaHrefFunc,
         // indiHrefFunc?: (id: string) => string;
         // famHrefFunc?: (id: string) => string;
-        horizontal: this.chartIsHorizontal,
+        horizontal: this.topolaConfig.chartIsHorizontal,
         colors: topola.ChartColors[this.topolaConfig.chartColors],
         // colors: topola.ChartColors.COLOR_BY_GENERATION,
         // AncestorChart CircleRenderer
