@@ -76,6 +76,24 @@
                  label="Vertical" />
       </div>
     </div>
+
+    <div class="q-ma-md col-xs-12">
+      <div>Colors:</div>
+    </div>
+    <div class="q-ma-md col-xs-12">
+      <div class="q-gutter-sm">
+        <q-radio dense
+                 @update:model-value="triggerChartColorsChanged"
+                 :modelValue="topolaConfig.chartColors"
+                 val="COLOR_BY_GENERATION"
+                 label="By Generation" />
+        <q-radio dense
+                 @update:model-value="triggerChartColorsChanged"
+                 :modelValue="topolaConfig.chartColors"
+                 val="COLOR_BY_SEX"
+                 label="By Sex" />
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -91,6 +109,11 @@ export default {
     // topolaChartType: "HourglassChart",
   }),
   methods: {
+    triggerChartColorsChanged(newChartColors) {
+      this.updateLocalConfig("chartColors", newChartColors)
+      this.$emit("triggerChartColorsChanged", newChartColors)
+    },
+
     triggerLayoutChanged(horizontalOrNot) {
       this.updateLocalConfig("chartIsHorizontal", horizontalOrNot)
       this.$emit("triggerLayoutChanged", horizontalOrNot)

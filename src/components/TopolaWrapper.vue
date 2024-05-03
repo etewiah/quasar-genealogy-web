@@ -70,10 +70,19 @@ export default {
       if (this.topolaChart.options.horizontal !== this.topolaConfig.chartIsHorizontal) {
         this.topolaChart.options.horizontal = this.topolaConfig.chartIsHorizontal
         this.topolaChart.render(focusDetails);
-      } else {
+      }
+      // else if (this.topolaChart.options.colors !== topola.ChartColors[this.topolaConfig.chartColors]) {
+      //   this.$refs.graphElement.innerHTML = ""
+      //   this.topolaChart.options.colors = topola.ChartColors[this.topolaConfig.chartColors]
+      //   this.topolaChart.render(focusDetails);
+      // }
+      else {
+        // horizontal setting seems to be the only one that gets updated without
+        // having to reset the graphElement
         this.$refs.graphElement.innerHTML = ""
         this.topolaChart.options.chartType = topola[this.topolaConfig.topolaChartType]
         this.topolaChart.options.renderer = topola[this.topolaConfig.topolaRenderer]
+        this.topolaChart.options.colors = topola.ChartColors[this.topolaConfig.chartColors]
         this.topolaChart.render(focusDetails);
       }
 

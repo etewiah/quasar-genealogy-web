@@ -25,6 +25,7 @@
           Settings
         </q-item-label>
         <TopolaSettings :topolaConfig="topolaConfig"
+                        @triggerChartColorsChanged="triggerChartColorsChanged"
                         @triggerLayoutChanged="triggerLayoutChanged"
                         @triggerRendererChanged="triggerRendererChanged"
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
@@ -49,10 +50,12 @@ defineOptions({
 
 const { getLocalTopolaConfig } = useLocalDataForTopola()
 let topolaConfig = ref(getLocalTopolaConfig())
-var topolaChartType = ref(topolaConfig.value.topolaChartType)
+// var topolaChartType = ref(topolaConfig.value.topolaChartType)
 var triggerLayoutChanged = function (horizontalOrNot) {
   topolaConfig.value.chartIsHorizontal = horizontalOrNot
-  // chartIsHorizontal.value = horizontalOrNot
+}
+var triggerChartColorsChanged = function (newChartColors) {
+  topolaConfig.value.chartColors = newChartColors
 }
 var triggerRendererChanged = function (newRenderer) {
   topolaConfig.value.topolaRenderer = newRenderer
