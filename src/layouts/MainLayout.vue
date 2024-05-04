@@ -8,12 +8,17 @@
                icon="menu"
                aria-label="Menu"
                @click="toggleLeftDrawer" />
-
         <q-toolbar-title>
-          Quasar Topola Viewer App
+          <q-btn stretch
+                 :to="{ name: 'rLandingPage', params: {} }"
+                 flat
+                 label="          Campbells And Dowdalls
+"
+                 no-caps />
+
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
 
@@ -43,7 +48,6 @@ import { ref } from 'vue'
 import TopolaSettings from 'components/TopolaSettings.vue'
 // import EssentialLink from 'components/EssentialLink.vue'
 import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
-
 defineOptions({
   name: 'MainLayout'
 })

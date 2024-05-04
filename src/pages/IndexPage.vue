@@ -1,7 +1,10 @@
 <template>
   <q-page class="flex flex-center">
-    <div>
-      <div class="q-mt-md q-pt-md">
+    <div class="row">
+      <div class="col-sm-12">
+        <ProjectIntro></ProjectIntro>
+      </div>
+      <div class="col-sm-12">
         <q-list padding
                 class="justify-center flex items-center"
                 style="max-width: 100vw">
@@ -26,6 +29,7 @@
 </template>
 
 <script setup>
+import ProjectIntro from 'components/content/ProjectIntro.vue'
 defineOptions({
   name: 'IndexPage'
 });
