@@ -6,6 +6,11 @@
           <q-btn stretch
                  :to="{ name: 'rLandingPage', params: {} }"
                  flat
+                 label="Home"
+                 no-caps />
+          <q-btn stretch
+                 :to="{ name: 'rTopolaStaticDataPage', params: {} }"
+                 flat
                  label="          Campbells And Dowdalls
 "
                  no-caps />

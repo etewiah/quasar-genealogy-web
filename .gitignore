@@ -34,3 +34,4 @@ yarn-error.log*
 .aider*
 /src/data/private/*
 /deploy/*
+/src/components/content/CampbellsProjectIntro.vue

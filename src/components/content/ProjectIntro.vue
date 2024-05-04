@@ -1,6 +1,6 @@
 <template>
-  <div class="ProjectIntro col-xs-12 no-flashing-caret">
-    <div class="q-mx-md intro-cont q-mt-md">
+  <div class="ProjectIntro row no-flashing-caret">
+    <div class="q-mx-md col-xs-12 intro-cont q-mt-md">
       <div class="row max-ctr q-pb-lg">
         <div class="col-sm-12 text-center">
           <div class="q-pb-sm q-mt-none q-pt-lg q-mr-none">
@@ -20,6 +20,26 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-xs-12 links-list">
+      <q-list padding
+              class="justify-center flex items-center"
+              style="max-width: 100vw">
+        <q-item clickable
+                v-ripple>
+          <q-item-section>
+            <q-item-label class="text-h6"
+                          lines="1"
+                          style="">
+              <router-link class=""
+                           :to="{ name: 'rTopolaStaticDataPage', params: {} }">
+                Topola example with static data
+              </router-link>
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+
+      </q-list>
     </div>
   </div>
 </template>
