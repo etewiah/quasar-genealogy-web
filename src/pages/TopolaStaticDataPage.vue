@@ -39,7 +39,7 @@ const props = defineProps({
 // Convert GEDCOM data to JSON format
 const allJsonData = topola.gedcomToJson(topolaGedcomData)
 
-const { getFocusedData } = useTopolaData()
+const { getFocusedData, cleanUpTopolaJson } = useTopolaData()
 
 // Find the current person's ID
 const route = useRoute()
@@ -52,6 +52,7 @@ if (!focusedIndiForGraph) {
   focusedIndiForGraph = allJsonData.indis[0]
 }
 
-const { topolaJsonData } = getFocusedData(allJsonData, focusedIndiForGraph);
+const unstripedTopolaJsonData = getFocusedData(allJsonData, focusedIndiForGraph);
+const topolaJsonData = cleanUpTopolaJson(unstripedTopolaJsonData);
 
 </script>
