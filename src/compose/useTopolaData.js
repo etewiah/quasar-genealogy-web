@@ -2,17 +2,8 @@ export default function () {
   function getFocusedData(
     allJsonData,
     focusedIndiForGraph,
-    maxGenerations = 5,
-    currentGeneration = 1
+    showGrandchildren = false
   ) {
-    // // Function to find the intersection of two arrays
-    // function intersection(arr1, arr2) {
-    //   const set1 = new Set(arr1)
-    //   const set2 = new Set(arr2)
-    //   const intersectionSet = new Set([...set1].filter((num) => set2.has(num)))
-    //   return [...intersectionSet]
-    // }
-
     // Filter families to include only those where the individual is mentioned
     const relatedFamilies = allJsonData.fams.filter((family) => {
       return (
@@ -41,36 +32,30 @@ export default function () {
       fams: relatedFamilies,
     }
 
-    // // Recursively fetch data for next generations if not reached max generations
-    // if (currentGeneration < maxGenerations) {
-    //   relatedFamilies.forEach((family) => {
-    //     const childrenIds = family.children
-    //     childrenIds.forEach((childId) => {
-    //       const child = allJsonData.indis.find(
-    //         (individual) => individual.id === childId
-    //       )
-    //       if (child) {
-    //         const childData = getFocusedData(
-    //           allJsonData,
-    //           child,
-    //           maxGenerations,
-    //           currentGeneration + 1
-    //         )
-    //         // Merge child data with current data
-    //         let mergedIndis = new Set([
-    //           ...topolaJsonData.indis,
-    //           ...childData.topolaJsonData.indis,
-    //         ])
-    //         topolaJsonData.indis = [...mergedIndis]
-    //         let mergedFams = new Set([
-    //           ...topolaJsonData.fams,
-    //           ...childData.topolaJsonData.fams,
-    //         ])
-    //         topolaJsonData.fams = [...mergedFams]
-    //       }
-    //     })
-    //   })
-    // }
+    if (showGrandchildren) {
+      relatedFamilies.forEach((family) => {
+        const childrenIds = family.children
+        childrenIds.forEach((childId) => {
+          const child = allJsonData.indis.find(
+            (individual) => individual.id === childId
+          )
+          if (child) {
+            const childData = getFocusedData(allJsonData, child, false)
+            // Merge child data with current data
+            let mergedIndis = new Set([
+              ...topolaJsonData.indis,
+              ...childData.indis,
+            ])
+            topolaJsonData.indis = [...mergedIndis]
+            let mergedFams = new Set([
+              ...topolaJsonData.fams,
+              ...childData.fams,
+            ])
+            topolaJsonData.fams = [...mergedFams]
+          }
+        })
+      })
+    }
 
     return topolaJsonData
   }
