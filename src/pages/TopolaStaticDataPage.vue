@@ -79,14 +79,14 @@ const relatedFamilies = allJsonData.fams.filter(family => {
   return family.husb === currentPersonID || family.wife === currentPersonID || family.children.includes(currentPersonID);
 });
 
-// If focused individual has no family association, choose someone else in the family
-// let selectedFamilyMembers = null;
-if (focusedIndiForGraph.fams.length < 1 && relatedFamilies.length > 0) {
-  const selectedFamilyMemberIds = [...relatedFamilies[0].children, relatedFamilies[0].husb, relatedFamilies[0].wife];
-  const otherIndividual = selectedFamilyMemberIds.find(memberId => memberId !== focusedIndiForGraph.id);
-  focusedIndiForGraph = allJsonData.indis.find(individual => individual.id === otherIndividual);
-  // selectedFamilyMembers = allJsonData.indis.filter(individual => selectedFamilyMemberIds.includes(individual.id));
-}
+// // If focused individual has no family association, choose someone else in the family
+// // let selectedFamilyMembers = null;
+// if (focusedIndiForGraph.fams.length < 1 && relatedFamilies.length > 0) {
+//   const selectedFamilyMemberIds = [...relatedFamilies[0].children, relatedFamilies[0].husb, relatedFamilies[0].wife];
+//   const otherIndividual = selectedFamilyMemberIds.find(memberId => memberId !== focusedIndiForGraph.id);
+//   focusedIndiForGraph = allJsonData.indis.find(individual => individual.id === otherIndividual);
+//   // selectedFamilyMembers = allJsonData.indis.filter(individual => selectedFamilyMemberIds.includes(individual.id));
+// }
 
 // Function to filter out family IDs from an individual's associations
 function stripFamIdsFromIndi(famIdsToKeep, Indi) {
