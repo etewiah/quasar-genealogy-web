@@ -23,7 +23,7 @@ import TopolaIndividual from 'components/TopolaIndividual.vue'
 import topolaGedcomData from 'src/data/private/Campbells-Dowdalls-Borthwicks.ged.js';
 import * as topola from 'topola';
 // import { parse as parseGedcom, toD3Force, toDot } from 'parse-gedcom';
-// import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import useTopolaData from 'src/compose/useTopolaData';
 
 defineOptions({
@@ -38,6 +38,20 @@ const props = defineProps({
 
 // Convert GEDCOM data to JSON format
 const allJsonData = topola.gedcomToJson(topolaGedcomData)
-const { topolaJsonData, focusedIndiForGraph } = useTopolaData(allJsonData);
+
+const { getFocusedData } = useTopolaData()
+
+// Find the current person's ID
+const route = useRoute()
+let currentPersonID = route.query.personID
+let focusedIndiForGraph = allJsonData.indis.find(
+  (individual) => individual.id === currentPersonID
+)
+// If current person is not found, use the first individual in the data
+if (!focusedIndiForGraph) {
+  focusedIndiForGraph = allJsonData.indis[0]
+}
+
+const { topolaJsonData } = getFocusedData(allJsonData, focusedIndiForGraph);
 
 </script>
