@@ -2,12 +2,6 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn flat
-               dense
-               round
-               icon="menu"
-               aria-label="Menu"
-               @click="toggleLeftDrawer" />
         <q-toolbar-title>
           <q-btn stretch
                  :to="{ name: 'rLandingPage', params: {} }"
@@ -17,13 +11,21 @@
                  no-caps />
 
         </q-toolbar-title>
-
+        <q-btn v-if="showSettingsMenu"
+               flat
+               dense
+               round
+               icon="settings"
+               aria-label="Menu"
+               @click="toggleRightDrawer" />
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
-
-    <q-drawer v-model="leftDrawerOpen"
-              show-if-above
+    <q-page-container>
+      <router-view :topolaConfig="topolaConfig" />
+    </q-page-container>
+    <q-drawer v-model="rightDrawerOpen"
+              side="right"
               bordered>
       <q-list>
         <q-item-label header>
@@ -36,20 +38,22 @@
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
       </q-list>
     </q-drawer>
-
-    <q-page-container>
-      <router-view :topolaConfig="topolaConfig" />
-    </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 import TopolaSettings from 'components/TopolaSettings.vue'
 // import EssentialLink from 'components/EssentialLink.vue'
 import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
 defineOptions({
   name: 'MainLayout'
+})
+
+const showSettingsMenu = computed(() => {
+  return ['rTopolaStaticDataPage'].includes(route.name)
 })
 
 const { getLocalTopolaConfig } = useLocalDataForTopola()
@@ -63,61 +67,15 @@ var triggerChartColorsChanged = function (newChartColors) {
 }
 var triggerRendererChanged = function (newRenderer) {
   topolaConfig.value.topolaRenderer = newRenderer
-  // topolaRenderer.value = newRenderer
 }
 var triggerChartTypeChanged = function (newCT) {
   topolaConfig.value.topolaChartType = newCT
   // topolaChartType.value = newCT
 }
 
-// const linksList = [
-//   {
-//     title: 'Docs',
-//     caption: 'quasar.dev',
-//     icon: 'school',
-//     link: 'https://quasar.dev'
-//   },
-//   {
-//     title: 'Github',
-//     caption: 'github.com/quasarframework',
-//     icon: 'code',
-//     link: 'https://github.com/quasarframework'
-//   },
-//   {
-//     title: 'Discord Chat Channel',
-//     caption: 'chat.quasar.dev',
-//     icon: 'chat',
-//     link: 'https://chat.quasar.dev'
-//   },
-//   {
-//     title: 'Forum',
-//     caption: 'forum.quasar.dev',
-//     icon: 'record_voice_over',
-//     link: 'https://forum.quasar.dev'
-//   },
-//   {
-//     title: 'Twitter',
-//     caption: '@quasarframework',
-//     icon: 'rss_feed',
-//     link: 'https://twitter.quasar.dev'
-//   },
-//   {
-//     title: 'Facebook',
-//     caption: '@QuasarFramework',
-//     icon: 'public',
-//     link: 'https://facebook.quasar.dev'
-//   },
-//   {
-//     title: 'Quasar Awesome',
-//     caption: 'Community Quasar projects',
-//     icon: 'favorite',
-//     link: 'https://awesome.quasar.dev'
-//   }
-// ]
+const rightDrawerOpen = ref(false)
 
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+function toggleRightDrawer() {
+  rightDrawerOpen.value = !rightDrawerOpen.value
 }
 </script>

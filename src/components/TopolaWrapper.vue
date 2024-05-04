@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <q-no-ssr>
     <div id="topola-chart">
       <svg ref="graphElement"
            id="graph" />
     </div>
-  </div>
+  </q-no-ssr>
 </template>
 <script>
 import { onMounted, ref, toRefs } from 'vue';
