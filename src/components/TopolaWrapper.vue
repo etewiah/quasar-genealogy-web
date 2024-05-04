@@ -1,16 +1,40 @@
 <template>
   <q-no-ssr>
+    <q-expansion-item v-if="showRawData"
+                      expand-separator
+                        label="Click Here To Show Raw Family Data">
+      <q-card>
+        <q-card-section>
+          <vue-json-pretty :data="topolaData.fams" />
+        </q-card-section>
+      </q-card>
+    </q-expansion-item>
     <div id="topola-chart">
       <svg ref="graphElement"
            id="graph" />
     </div>
+    <q-expansion-item v-if="showRawData"
+                      expand-separator
+                        label="Click Here To Show Raw Individuals Data">
+      <q-card>
+        <q-card-section>
+          <vue-json-pretty :data="topolaData.indis" />
+        </q-card-section>
+      </q-card>
+    </q-expansion-item>
   </q-no-ssr>
 </template>
 <script>
+import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
+
 import { onMounted, ref, toRefs } from 'vue';
 import * as topola from 'topola';
 
 export default {
+  components: {
+    VueJsonPretty
+  },
   props: {
     focusedIndiForGraph: {
       type: Object
@@ -55,7 +79,8 @@ export default {
   },
   data: () => ({
     topolaChart: null,
-    topolaChartData: {}
+    topolaChartData: {},
+    showRawData: true
   }),
   methods: {
     topolaIndiCallback(info, moreInfor) { },
