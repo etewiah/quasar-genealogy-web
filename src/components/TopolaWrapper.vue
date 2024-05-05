@@ -1,8 +1,8 @@
 <template>
-  <q-no-ssr>
+  <div>
     <q-expansion-item v-if="showRawData"
                       expand-separator
-                        label="Click Here To Show Raw Family Data">
+                      label="Click Here To Show Raw Family Data">
       <q-card>
         <q-card-section>
           <vue-json-pretty :data="topolaData.fams" />
@@ -15,14 +15,14 @@
     </div>
     <q-expansion-item v-if="showRawData"
                       expand-separator
-                        label="Click Here To Show Raw Individuals Data">
+                      label="Click Here To Show Raw Individuals Data">
       <q-card>
         <q-card-section>
           <vue-json-pretty :data="topolaData.indis" />
         </q-card-section>
       </q-card>
     </q-expansion-item>
-  </q-no-ssr>
+  </div>
 </template>
 <script>
 import VueJsonPretty from 'vue-json-pretty';
@@ -80,7 +80,7 @@ export default {
   data: () => ({
     topolaChart: null,
     topolaChartData: {},
-    showRawData: true
+    showRawData: false
   }),
   methods: {
     topolaIndiCallback(info, moreInfor) { },
