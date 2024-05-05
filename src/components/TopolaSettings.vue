@@ -9,27 +9,31 @@
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaConfig.topolaChartType"
                  val="AncestorChart"
-                 label="AncestorChart" />
-        <q-radio dense
-                 @update:model-value="triggerChartTypeChanged"
-                 :modelValue="topolaConfig.topolaChartType"
-                 val="KinshipChart"
-                 label="KinshipChart" />
+                 label="Ancestors" />
+        <br>
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaConfig.topolaChartType"
                  val="DescendantChart"
-                 label="DescendantChart" />
+                 label="Descendants" />
+        <br>
+        <q-radio dense
+                 @update:model-value="triggerChartTypeChanged"
+                 :modelValue="topolaConfig.topolaChartType"
+                 val="KinshipChart"
+                 label="Kinship" />
+        <br>
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaConfig.topolaChartType"
                  val="RelativesChart"
-                 label="RelativesChart" />
-        <q-radio dense
+                 label="Relatives" />
+        <br>
+        <!-- <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaConfig.topolaChartType"
                  val="FancyChart"
-                 label="FancyChart" />
+                 label="Fancy" /> -->
         <q-radio dense
                  @update:model-value="triggerChartTypeChanged"
                  :modelValue="topolaConfig.topolaChartType"
@@ -37,7 +41,7 @@
                  label="HourglassChart" />
       </div>
     </div>
-    <div class="q-ma-md col-xs-12">
+    <!-- <div class="q-ma-md col-xs-12">
       <div>Renderer:</div>
     </div>
     <div class="q-ma-md col-xs-12">
@@ -58,7 +62,7 @@
                  val="CircleRenderer"
                  label="CircleRenderer" />
       </div>
-    </div>
+    </div> -->
     <div class="q-ma-md col-xs-12">
       <div>Orientation:</div>
     </div>

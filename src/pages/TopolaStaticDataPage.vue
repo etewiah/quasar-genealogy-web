@@ -52,7 +52,7 @@ if (!focusedIndiForGraph) {
   focusedIndiForGraph = allJsonData.indis[0]
 }
 
-let showGrandchildren = true
+let showGrandchildren = false
 const unstripedTopolaJsonData = getFocusedData(allJsonData, focusedIndiForGraph, showGrandchildren);
 const topolaJsonData = cleanUpTopolaJson(unstripedTopolaJsonData);
 
