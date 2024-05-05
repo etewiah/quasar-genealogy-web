@@ -42,6 +42,7 @@
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
       </q-list>
     </q-drawer>
+    <GenealogyFooter></GenealogyFooter>
   </q-layout>
 </template>
 
@@ -50,7 +51,7 @@ import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 import TopolaSettings from 'components/TopolaSettings.vue'
-// import EssentialLink from 'components/EssentialLink.vue'
+import GenealogyFooter from 'components/content/GenealogyFooter.vue'
 import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
 defineOptions({
   name: 'MainLayout'
