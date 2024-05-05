@@ -11,8 +11,7 @@
           <q-btn stretch
                  :to="{ name: 'rTopolaStaticDataPage', params: {} }"
                  flat
-                 label="          Campbells And Dowdalls
-"
+                 label="Kennedy's Demo"
                  no-caps />
 
         </q-toolbar-title>

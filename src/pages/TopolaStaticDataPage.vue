@@ -19,8 +19,7 @@ import TopolaWrapper from 'components/TopolaWrapper.vue'
 import TopolaIndividual from 'components/TopolaIndividual.vue'
 // import topolaJsonData from 'src/data/MinimalExampleData.json'
 // import topolaJsonData from 'src/data/private/borthwicks-reg.json' // 'src/data/KennedyFamilyData.json'
-// import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
-import topolaGedcomData from 'src/data/private/Campbells-Dowdalls-Borthwicks.ged.js';
+import topolaGedcomData from 'src/data/KennedyFamilyData.ged.js'
 import * as topola from 'topola';
 // import { parse as parseGedcom, toD3Force, toDot } from 'parse-gedcom';
 import { useRoute } from 'vue-router'

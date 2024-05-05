@@ -7,16 +7,27 @@
             <h2 class="proj-intro-main q-mb-none text-h4"
                 style="margin-top: 0px">
               <span style="color: black"
-                    class="hhwyf">A shared space for digging into our genealogy</span>
+                    class="hhwyf">Genealogy site built with <a href="https://quasar.dev/">Quasar</a> and <a
+                   href="https://vuejs.org/">Vue</a>.</span>
             </h2>
           </div>
         </div>
         <div class="col-xs-12 col-md-8 offset-md-2">
           <div class="proj-intro-content-inner q-mt-none q-pt-lg q-mr-md">
-            <div class="text-h6 text-left">
-              This project is currently mainly about displaying gedcom data.
-            </div>
-
+            <p class="text-subtitle1 text-left">
+              This is a hosted demo of the tool who's source code that can be found here: <a
+                 href="https://github.com/etewiah/quasar-genealogy-web">https://github.com/etewiah/quasar-genealogy-web</a>
+            </p>
+            <p class="text-subtitle1 text-left">
+              It is a tool for exploring genealogical trees, allowing users to navigate through the
+              family's hierarchical structure.
+            </p>
+            <p class="text-subtitle1 text-left">
+              It uses the fantastic topola library (<a
+                 href="https://github.com/PeWu/topola">https://github.com/PeWu/topola</a>) and
+              can be considered a more basic version of (<a
+                 href="https://github.com/PeWu/topola-viewer">https://github.com/PeWu/topola-viewer</a>)
+            </p>
           </div>
         </div>
       </div>
@@ -33,7 +44,7 @@
                           style="">
               <router-link class=""
                            :to="{ name: 'rTopolaStaticDataPage', params: {} }">
-                Topola example with static data
+                Demo With Kennedys Family Tree
               </router-link>
             </q-item-label>
           </q-item-section>

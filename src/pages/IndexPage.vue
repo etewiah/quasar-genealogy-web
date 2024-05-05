@@ -9,8 +9,7 @@
 </template>
 
 <script setup>
-// import ProjectIntro from 'components/content/ProjectIntro.vue'
-import ProjectIntro from 'components/content/CampbellsProjectIntro.vue'
+import ProjectIntro from 'components/content/ProjectIntro.vue'
 defineOptions({
   name: 'IndexPage'
 });
