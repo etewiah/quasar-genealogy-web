@@ -42,6 +42,8 @@
                         @triggerChartTypeChanged="triggerChartTypeChanged"></TopolaSettings>
       </q-list>
     </q-drawer>
+    <SocialSharing></SocialSharing>
+    <QrCodeShare></QrCodeShare>
     <GenealogyFooter></GenealogyFooter>
   </q-layout>
 </template>
@@ -51,6 +53,8 @@ import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 import TopolaSettings from 'components/TopolaSettings.vue'
+import QrCodeShare from 'components/sharing/QrCodeShare.vue'
+import SocialSharing from 'components/sharing/SocialSharing.vue'
 import GenealogyFooter from 'components/content/GenealogyFooter.vue'
 import useLocalDataForTopola from "src/compose/useLocalDataForTopola.js"
 defineOptions({
