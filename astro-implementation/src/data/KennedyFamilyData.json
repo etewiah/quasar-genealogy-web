@@ -1,0 +1,1967 @@
+{
+  "indis": [
+    {
+      "id": "I0",
+      "fams": [
+        "F0"
+      ],
+      "firstName": "John Fitzgerald 'Jack'",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1917,
+          "month": 5,
+          "day": 29
+        },
+        "place": "Brookline, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1963,
+          "month": 11,
+          "day": 22
+        },
+        "place": "Dallas, TX",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I1",
+      "fams": [
+        "F1"
+      ],
+      "firstName": "Joseph Patrick",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F9",
+      "birth": {
+        "date": {
+          "year": 1888,
+          "month": 9,
+          "day": 6
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1969,
+          "month": 11,
+          "day": 18
+        },
+        "place": "Hyannis Port, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I2",
+      "fams": [
+        "F1"
+      ],
+      "firstName": "Rose Elizabeth",
+      "lastName": "Fitzgerald",
+      "sex": "F",
+      "famc": "F13",
+      "birth": {
+        "date": {
+          "year": 1890,
+          "month": 7,
+          "day": 22
+        },
+        "place": "North End, Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1995,
+          "month": 1,
+          "day": 22
+        },
+        "place": "Hyannis Port, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I3",
+      "fams": [],
+      "firstName": "Joseph Patrick",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1915,
+          "month": 7,
+          "day": 1
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1944,
+          "month": 8,
+          "day": 2
+        },
+        "place": "Suffolk, England",
+        "confirmed": true
+      },
+      "notes": [
+        "Joseph Patrick was well liked, quick to smile, and had a tremendous dose of Irish charm."
+      ],
+      "events": []
+    },
+    {
+      "id": "I4",
+      "fams": [],
+      "firstName": "Rose Marie 'Rosemary'",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1918,
+          "month": 9,
+          "day": 13
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 2005,
+          "month": 1,
+          "day": 7
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I5",
+      "fams": [
+        "F2"
+      ],
+      "firstName": "William John Robert",
+      "lastName": "Cavendish",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1917,
+          "month": 12,
+          "day": 10
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1944,
+          "month": 9,
+          "day": 10
+        },
+        "place": "Belgium",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I6",
+      "fams": [
+        "F2"
+      ],
+      "firstName": "Kathleen Angus 'Kick'",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1920,
+          "month": 2,
+          "day": 20
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1948,
+          "month": 5,
+          "day": 13
+        },
+        "place": "France",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I7",
+      "fams": [
+        "F3"
+      ],
+      "firstName": "Robert Sargent",
+      "lastName": "Shriver",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1915,
+          "month": 11,
+          "day": 9
+        },
+        "place": "Westminster, MD",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 2011,
+          "month": 1,
+          "day": 18
+        },
+        "place": "Bethesda, MD",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I8",
+      "fams": [
+        "F3"
+      ],
+      "firstName": "Eunice Mary",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1921,
+          "month": 7,
+          "day": 10
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 2009,
+          "month": 8,
+          "day": 11
+        },
+        "confirmed": true
+      },
+      "notes": [
+        "She helped in the many political campaigns of her brother, John Fitzgerald."
+      ],
+      "events": []
+    },
+    {
+      "id": "I9",
+      "fams": [],
+      "firstName": "Robert Sargent 'Bobby'",
+      "lastName": "Shriver",
+      "sex": "M",
+      "famc": "F3",
+      "birth": {
+        "date": {
+          "year": 1954,
+          "month": 4,
+          "day": 28
+        },
+        "place": "Chicago, Illinois",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I10",
+      "fams": [
+        "F4"
+      ],
+      "firstName": "Arnold Alois",
+      "lastName": "Schwarzenegger",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1947,
+          "month": 7,
+          "day": 30
+        },
+        "place": "Thal, Austria",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I11",
+      "fams": [
+        "F4"
+      ],
+      "firstName": "Maria Owings",
+      "lastName": "Shriver",
+      "sex": "F",
+      "famc": "F3",
+      "birth": {
+        "date": {
+          "year": 1955,
+          "month": 11,
+          "day": 6
+        },
+        "place": "Chicago, Illinois",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I12",
+      "fams": [],
+      "firstName": "Timothy",
+      "lastName": "Shriver",
+      "sex": "M",
+      "famc": "F3",
+      "birth": {
+        "date": {
+          "year": 1959,
+          "month": 8,
+          "day": 29
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I13",
+      "fams": [],
+      "firstName": "Mark Kennedy",
+      "lastName": "Shriver",
+      "sex": "M",
+      "famc": "F3",
+      "birth": {
+        "date": {
+          "year": 1964,
+          "month": 2,
+          "day": 17
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I14",
+      "fams": [],
+      "firstName": "Anthony Paul Kennedy",
+      "lastName": "Shriver",
+      "sex": "M",
+      "famc": "F3",
+      "birth": {
+        "date": {
+          "year": 1965,
+          "month": 7,
+          "day": 20
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I15",
+      "fams": [
+        "F5"
+      ],
+      "firstName": "Peter",
+      "lastName": "Lawford",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1923,
+          "month": 9,
+          "day": 7
+        },
+        "place": "London, England",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1984,
+          "month": 12,
+          "day": 24
+        },
+        "place": "Los Angeles, California",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I16",
+      "fams": [
+        "F5"
+      ],
+      "firstName": "Patricia Helen 'Pat'",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1924,
+          "month": 5,
+          "day": 6
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 2006,
+          "month": 9,
+          "day": 17
+        },
+        "place": "Manhattan, New York, U.S.",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I17",
+      "fams": [],
+      "firstName": "Christopher",
+      "lastName": "Lawford",
+      "sex": "M",
+      "famc": "F5",
+      "birth": {
+        "date": {
+          "year": 1955,
+          "month": 3,
+          "day": 29
+        },
+        "place": "Santa Monica, California",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 2018,
+          "month": 9,
+          "day": 4
+        },
+        "place": "Vancouver, British Columbia, Canada",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I18",
+      "fams": [],
+      "firstName": "Victoria",
+      "lastName": "Lawford",
+      "sex": "F",
+      "famc": "F5",
+      "birth": {
+        "date": {
+          "year": 1958,
+          "month": 11,
+          "day": 4
+        },
+        "place": "Santa Monica, California",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I19",
+      "fams": [],
+      "firstName": "Sydney Maleia Kennedy",
+      "lastName": "Lawford",
+      "sex": "F",
+      "famc": "F5",
+      "birth": {
+        "date": {
+          "year": 1956,
+          "month": 8,
+          "day": 25
+        },
+        "place": "Santa Monica, California",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I20",
+      "fams": [],
+      "firstName": "Robin Elizabeth",
+      "lastName": "Lawford",
+      "sex": "F",
+      "famc": "F5",
+      "birth": {
+        "date": {
+          "year": 1961,
+          "month": 7,
+          "day": 2
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I21",
+      "fams": [
+        "F6"
+      ],
+      "firstName": "Robert Francis 'Bobby'",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1925,
+          "month": 11,
+          "day": 20
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1968,
+          "month": 6,
+          "day": 6
+        },
+        "place": "Los Angeles, CA",
+        "confirmed": true
+      },
+      "notes": [
+        "Robert Francis was assassinated in California during his 1968 presidential campaign."
+      ],
+      "events": []
+    },
+    {
+      "id": "I22",
+      "fams": [
+        "F6"
+      ],
+      "firstName": "Ethel",
+      "lastName": "Skakel",
+      "sex": "F",
+      "birth": {
+        "date": {
+          "year": 1928,
+          "month": 4,
+          "day": 11
+        },
+        "place": "Chicago, Illinois",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I23",
+      "fams": [],
+      "firstName": "Kathleen Hartington",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1951,
+          "month": 7,
+          "day": 4
+        },
+        "place": "Greenwich, Connecticut, U.S.",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I24",
+      "fams": [],
+      "firstName": "Joseph Patrick",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1952,
+          "month": 9,
+          "day": 24
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I25",
+      "fams": [],
+      "firstName": "Robert Francis",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1954,
+          "month": 1,
+          "day": 17
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I26",
+      "fams": [],
+      "firstName": "David Anthony",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1955,
+          "month": 6,
+          "day": 15
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1984,
+          "month": 4,
+          "day": 25
+        },
+        "place": "Palm Beach, Florida",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I27",
+      "fams": [],
+      "firstName": "Mary Courtney",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1956,
+          "month": 9,
+          "day": 8
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I28",
+      "fams": [],
+      "firstName": "Michael L.",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1958,
+          "month": 2,
+          "day": 27
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1997,
+          "month": 12,
+          "day": 31
+        },
+        "place": "Aspen, Colorado",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I29",
+      "fams": [],
+      "firstName": "Mary Kerry",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1959,
+          "month": 9,
+          "day": 8
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I30",
+      "fams": [],
+      "firstName": "Christopher George",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1963,
+          "month": 6,
+          "day": 4
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I31",
+      "fams": [],
+      "firstName": "Matthew Maxwell Taylor 'Max'",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1965,
+          "month": 1,
+          "day": 11
+        },
+        "place": "Manhattan, New York, U.S.",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I32",
+      "fams": [],
+      "firstName": "Douglas Harriman",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1967,
+          "month": 3,
+          "day": 24
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I33",
+      "fams": [],
+      "firstName": "Rory Elizabeth Katherine",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F6",
+      "birth": {
+        "date": {
+          "year": 1968,
+          "month": 12,
+          "day": 12
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I34",
+      "fams": [
+        "F7"
+      ],
+      "firstName": "Stephen Edward",
+      "lastName": "Smith",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1927,
+          "month": 9,
+          "day": 24
+        },
+        "place": "Bayport, New York",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1990,
+          "month": 8,
+          "day": 19
+        },
+        "place": "Manhattan, New York",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I35",
+      "fams": [
+        "F7"
+      ],
+      "firstName": "Jean Ann",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1928,
+          "month": 2,
+          "day": 20
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I36",
+      "fams": [],
+      "firstName": "Stephen",
+      "lastName": "Smith",
+      "sex": "M",
+      "famc": "F7",
+      "events": []
+    },
+    {
+      "id": "I37",
+      "fams": [],
+      "firstName": "William Kennedy",
+      "lastName": "Smith",
+      "sex": "M",
+      "famc": "F7",
+      "birth": {
+        "date": {
+          "year": 1960,
+          "month": 9,
+          "day": 4
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I38",
+      "fams": [],
+      "firstName": "Amanda",
+      "lastName": "Smith",
+      "sex": "F",
+      "famc": "F7",
+      "events": []
+    },
+    {
+      "id": "I39",
+      "fams": [
+        "F8"
+      ],
+      "firstName": "Edward Moore 'Ted'",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F1",
+      "birth": {
+        "date": {
+          "year": 1932,
+          "month": 2,
+          "day": 22
+        },
+        "place": "Brookline, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 2009,
+          "month": 8,
+          "day": 25
+        },
+        "place": "Hyannis Port, MA",
+        "confirmed": true
+      },
+      "notes": [
+        "Enlisted in the Navy during World War II."
+      ],
+      "events": []
+    },
+    {
+      "id": "I40",
+      "fams": [
+        "F8"
+      ],
+      "firstName": "Virginia Joan",
+      "lastName": "Bennett",
+      "sex": "F",
+      "birth": {
+        "date": {
+          "year": 1936,
+          "month": 9,
+          "day": 2
+        },
+        "place": "Crowley, Louisiana",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I41",
+      "fams": [],
+      "firstName": "Kara Ann",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F8",
+      "birth": {
+        "date": {
+          "year": 1960,
+          "month": 2,
+          "day": 27
+        },
+        "place": "Bronxville, New York",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 2011,
+          "month": 9,
+          "day": 16
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I42",
+      "fams": [],
+      "firstName": "Edward Moore",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F8",
+      "birth": {
+        "date": {
+          "year": 1961,
+          "month": 9,
+          "day": 26
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I43",
+      "fams": [],
+      "firstName": "Patrick Joseph",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F8",
+      "birth": {
+        "date": {
+          "year": 1967,
+          "month": 7,
+          "day": 14
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I44",
+      "fams": [
+        "F9"
+      ],
+      "firstName": "Patrick Joseph",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F10",
+      "birth": {
+        "date": {
+          "year": 1858,
+          "month": 1,
+          "day": 14
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1929,
+          "month": 5,
+          "day": 18
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I45",
+      "fams": [
+        "F9"
+      ],
+      "firstName": "Mary Augusta",
+      "lastName": "Hickey",
+      "sex": "F",
+      "birth": {
+        "date": {
+          "year": 1857,
+          "month": 12,
+          "day": 6
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1923,
+          "month": 5,
+          "day": 6
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I46",
+      "fams": [
+        "F10"
+      ],
+      "firstName": "Patrick",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1823,
+          "month": 2,
+          "day": 16
+        },
+        "place": "Dunganstown, Ireland",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1858,
+          "month": 11,
+          "day": 22
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "notes": [
+        "The potato famine of 1845-48, plagued the country of Ireland and pushed many Irishmen to flee to the land of promise, the USA. Patrick Kennedy was among those to leave his home in Wexford County, Ireland, in 1848, in hopes of finding a better li"
+      ],
+      "events": []
+    },
+    {
+      "id": "I47",
+      "fams": [
+        "F10"
+      ],
+      "firstName": "Bridget",
+      "lastName": "Murphy",
+      "sex": "F",
+      "birth": {
+        "date": {
+          "year": 1821
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1888,
+          "month": 12,
+          "day": 20
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "notes": [
+        "After her husband died, she opened up a 'Notions Shop' to provide for her family."
+      ],
+      "events": []
+    },
+    {
+      "id": "I48",
+      "fams": [
+        "F11"
+      ],
+      "firstName": "John Vernou",
+      "lastName": "Bouvier",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1891,
+          "month": 5,
+          "day": 19
+        },
+        "place": "East Hampton, New York",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1957,
+          "month": 8,
+          "day": 3
+        },
+        "place": "New York City, New York",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I49",
+      "fams": [
+        "F11",
+        "F12"
+      ],
+      "firstName": "Janet Norton",
+      "lastName": "Lee",
+      "sex": "F",
+      "birth": {
+        "date": {
+          "year": 1907,
+          "month": 12,
+          "day": 3
+        },
+        "place": "Manhattan, New York",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1987,
+          "month": 7,
+          "day": 22
+        },
+        "place": "Newport, Rhode Island",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I50",
+      "fams": [
+        "F13"
+      ],
+      "firstName": "John Francis 'Honey Fitz'",
+      "lastName": "Fitzgerald",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1863,
+          "month": 2,
+          "day": 11
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1950,
+          "month": 10,
+          "day": 2
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "notes": [
+        "He was known as 'Honey Fitz'."
+      ],
+      "events": []
+    },
+    {
+      "id": "I51",
+      "fams": [
+        "F13"
+      ],
+      "firstName": "Mary Josephine",
+      "lastName": "Hannon",
+      "sex": "F",
+      "death": {
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I52",
+      "fams": [
+        "F0",
+        "F14"
+      ],
+      "firstName": "Jacqueline Lee Kennedy",
+      "lastName": "Bouvier",
+      "sex": "F",
+      "famc": "F11",
+      "birth": {
+        "date": {
+          "year": 1929,
+          "month": 7,
+          "day": 28
+        },
+        "place": "Southampton, Long Island, NY",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1994,
+          "month": 5,
+          "day": 19
+        },
+        "place": "New York",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I53",
+      "fams": [],
+      "firstName": "Caroline Bouvier",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F0",
+      "birth": {
+        "date": {
+          "year": 1957,
+          "month": 11,
+          "day": 27
+        },
+        "place": "New York",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I54",
+      "fams": [],
+      "firstName": "John Fitzgerald",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F0",
+      "birth": {
+        "date": {
+          "year": 1960,
+          "month": 11,
+          "day": 25
+        },
+        "place": "Washington, DC",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1999,
+          "month": 7,
+          "day": 16
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I55",
+      "fams": [],
+      "firstName": "Patrick Bouvier",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F0",
+      "birth": {
+        "date": {
+          "year": 1963,
+          "month": 8,
+          "day": 7
+        },
+        "place": "Otis Air Force B, Mass",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1963,
+          "month": 8,
+          "day": 9
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I56",
+      "fams": [
+        "F15"
+      ],
+      "firstName": "Margaret Louise",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F9",
+      "birth": {
+        "date": {
+          "year": 1898,
+          "month": 10,
+          "day": 22
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1974,
+          "month": 11,
+          "day": 14
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I57",
+      "fams": [
+        "F15"
+      ],
+      "firstName": "Charles Joseph",
+      "lastName": "Burke",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1899,
+          "month": 8,
+          "day": 23
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1967,
+          "month": 4,
+          "day": 5
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I58",
+      "fams": [
+        "F14"
+      ],
+      "firstName": "Aristotle Socrates 'Aristo Onassis'",
+      "lastName": "Onassis",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1906,
+          "month": 1,
+          "day": 20
+        },
+        "place": "Karataş, Smyrna, Ottoman Empire",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1975,
+          "month": 3,
+          "day": 15
+        },
+        "place": "American Hospital of Paris, Neuilly-sur-Seine, France",
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I59",
+      "fams": [
+        "F16"
+      ],
+      "firstName": "Mary L",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F10",
+      "birth": {
+        "date": {
+          "year": 1851,
+          "month": 8,
+          "day": 9
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1926
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I60",
+      "fams": [
+        "F17"
+      ],
+      "firstName": "Joanna L",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F10",
+      "birth": {
+        "date": {
+          "year": 1852,
+          "month": 12,
+          "day": 4
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1926
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I61",
+      "fams": [],
+      "firstName": "John",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F10",
+      "birth": {
+        "date": {
+          "year": 1854,
+          "month": 1,
+          "day": 4
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1855,
+          "month": 9,
+          "day": 24
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I62",
+      "fams": [
+        "F18"
+      ],
+      "firstName": "Margaret",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F10",
+      "birth": {
+        "date": {
+          "year": 1855,
+          "month": 7,
+          "day": 18
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1929
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I63",
+      "fams": [
+        "F17"
+      ],
+      "firstName": "Humphrey Charles",
+      "lastName": "Mahoney",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1854
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1923
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I64",
+      "fams": [
+        "F18"
+      ],
+      "firstName": "John T.",
+      "lastName": "Caulfield",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1856
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1928
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I65",
+      "fams": [
+        "F16"
+      ],
+      "firstName": "Laurence M",
+      "lastName": "Kane",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1853
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1924
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I66",
+      "fams": [],
+      "firstName": "Mary Loretta",
+      "lastName": "Kennedy",
+      "sex": "F",
+      "famc": "F9",
+      "birth": {
+        "date": {
+          "year": 1892,
+          "month": 8,
+          "day": 6
+        },
+        "place": "Boston, MA",
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1972,
+          "month": 11,
+          "day": 18
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I67",
+      "fams": [
+        "F12"
+      ],
+      "firstName": "Hugh",
+      "lastName": "Achincloss",
+      "sex": "M",
+      "birth": {
+        "date": {
+          "year": 1897,
+          "month": 8,
+          "day": 15
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1976,
+          "month": 11,
+          "day": 20
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I68",
+      "fams": [],
+      "firstName": "Francis Benedict",
+      "lastName": "Kennedy",
+      "sex": "M",
+      "famc": "F9",
+      "birth": {
+        "date": {
+          "year": 1891,
+          "month": 3,
+          "day": 11
+        },
+        "confirmed": true
+      },
+      "death": {
+        "date": {
+          "year": 1892,
+          "month": 6,
+          "day": 14
+        },
+        "confirmed": true
+      },
+      "events": []
+    },
+    {
+      "id": "I69",
+      "fams": [],
+      "firstName": "Kym Maria",
+      "lastName": "Smith",
+      "sex": "F",
+      "famc": "F7",
+      "events": []
+    }
+  ],
+  "fams": [
+    {
+      "id": "F0",
+      "children": [
+        "I53",
+        "I54",
+        "I55"
+      ],
+      "husb": "I0",
+      "wife": "I52",
+      "marriage": {
+        "date": {
+          "year": 1953,
+          "month": 9,
+          "day": 12
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F1",
+      "children": [
+        "I3",
+        "I0",
+        "I4",
+        "I6",
+        "I8",
+        "I16",
+        "I21",
+        "I35",
+        "I39"
+      ],
+      "husb": "I1",
+      "wife": "I2",
+      "marriage": {
+        "date": {
+          "year": 1914,
+          "month": 10,
+          "day": 7
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F2",
+      "children": [],
+      "husb": "I5",
+      "wife": "I6",
+      "marriage": {
+        "date": {
+          "year": 1944,
+          "month": 5,
+          "day": 6
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F3",
+      "children": [
+        "I9",
+        "I11",
+        "I12",
+        "I13",
+        "I14"
+      ],
+      "husb": "I7",
+      "wife": "I8",
+      "marriage": {
+        "date": {
+          "year": 1953,
+          "month": 5,
+          "day": 23
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F4",
+      "children": [],
+      "husb": "I10",
+      "wife": "I11",
+      "marriage": {
+        "date": {
+          "year": 1986
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F5",
+      "children": [
+        "I17",
+        "I19",
+        "I18",
+        "I20"
+      ],
+      "husb": "I15",
+      "wife": "I16",
+      "marriage": {
+        "date": {
+          "year": 1954,
+          "month": 4,
+          "day": 24
+        },
+        "place": "Churhc of St. Thomas More, New York City",
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F6",
+      "children": [
+        "I23",
+        "I24",
+        "I25",
+        "I26",
+        "I27",
+        "I28",
+        "I29",
+        "I30",
+        "I31",
+        "I32",
+        "I33"
+      ],
+      "husb": "I21",
+      "wife": "I22",
+      "marriage": {
+        "date": {
+          "year": 1950,
+          "month": 6,
+          "day": 17
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F7",
+      "children": [
+        "I37",
+        "I36",
+        "I38",
+        "I69"
+      ],
+      "husb": "I34",
+      "wife": "I35",
+      "marriage": {
+        "date": {
+          "year": 1956,
+          "month": 1,
+          "day": 1
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F8",
+      "children": [
+        "I41",
+        "I42",
+        "I43"
+      ],
+      "husb": "I39",
+      "wife": "I40",
+      "marriage": {
+        "date": {
+          "year": 1958,
+          "month": 11,
+          "day": 29
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F9",
+      "children": [
+        "I1",
+        "I68",
+        "I66",
+        "I56"
+      ],
+      "husb": "I44",
+      "wife": "I45",
+      "marriage": {
+        "date": {
+          "year": 1887,
+          "month": 11,
+          "day": 23
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F10",
+      "children": [
+        "I59",
+        "I60",
+        "I61",
+        "I62",
+        "I44"
+      ],
+      "husb": "I46",
+      "wife": "I47",
+      "marriage": {
+        "date": {
+          "year": 1849,
+          "month": 9,
+          "day": 28
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F11",
+      "children": [
+        "I52"
+      ],
+      "husb": "I48",
+      "wife": "I49",
+      "marriage": {
+        "date": {
+          "year": 1928,
+          "month": 7,
+          "day": 7
+        },
+        "place": "St. Philomena's Church, East Hampton",
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F12",
+      "children": [],
+      "husb": "I67",
+      "wife": "I49",
+      "marriage": {
+        "date": {
+          "year": 1942,
+          "month": 6,
+          "day": 21
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F13",
+      "children": [
+        "I2"
+      ],
+      "husb": "I50",
+      "wife": "I51",
+      "marriage": {
+        "date": {
+          "year": 1889,
+          "month": 9,
+          "day": 18
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F14",
+      "children": [],
+      "husb": "I58",
+      "wife": "I52",
+      "marriage": {
+        "date": {
+          "year": 1968
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F15",
+      "children": [],
+      "husb": "I57",
+      "wife": "I56",
+      "marriage": {
+        "date": {
+          "year": 1924,
+          "month": 6,
+          "day": 14
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F16",
+      "children": [],
+      "husb": "I65",
+      "wife": "I59",
+      "marriage": {
+        "date": {
+          "year": 1883,
+          "month": 1,
+          "day": 1
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F17",
+      "children": [],
+      "husb": "I63",
+      "wife": "I60",
+      "marriage": {
+        "date": {
+          "year": 1872,
+          "month": 9,
+          "day": 22
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    },
+    {
+      "id": "F18",
+      "children": [],
+      "husb": "I64",
+      "wife": "I62",
+      "marriage": {
+        "date": {
+          "year": 1882,
+          "month": 1,
+          "day": 1
+        },
+        "confirmed": true,
+        "type": "marriage"
+      }
+    }
+  ]
+}

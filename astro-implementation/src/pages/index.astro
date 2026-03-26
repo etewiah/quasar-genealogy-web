@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Genealogy Web">
+  <div class="page-container">
+    <div class="project-intro">
+      <div class="text-center">
+        <h2 class="text-h4" style="margin-top:0">
+          Genealogy site built with
+          <a href="https://astro.build/">Astro</a> and
+          <a href="https://vuejs.org/">Vue</a>.
+        </h2>
+      </div>
+
+      <p class="text-subtitle1">
+        This is a hosted demo of the tool whose source code can be found here:
+        <a href="https://github.com/etewiah/quasar-genealogy-web">https://github.com/etewiah/quasar-genealogy-web</a>
+      </p>
+      <p class="text-subtitle1">
+        It is a tool for exploring genealogical trees, allowing users to navigate through the
+        family's hierarchical structure.
+      </p>
+      <p class="text-subtitle1">
+        It uses the fantastic topola library
+        (<a href="https://github.com/PeWu/topola">https://github.com/PeWu/topola</a>) and
+        can be considered a more basic version of
+        (<a href="https://github.com/PeWu/topola-viewer">https://github.com/PeWu/topola-viewer</a>).
+      </p>
+      <p class="text-subtitle1">
+        I considered using this library
+        (<a href="https://github.com/donatso/family-chart">https://github.com/donatso/family-chart</a>) but it
+        wasn't obvious to me how to use it with GEDCOM data.
+      </p>
+      <p class="text-subtitle1">
+        A big shortcoming of the project right now is that all the data comes from a GEDCOM file that
+        needs to be saved along with the code. The next improvement I'd like to make is to have a
+        backend where the data can be saved and manipulated.
+      </p>
+      <p class="text-subtitle1">
+        I would like to have been able to use the Gramps Web API as the backend
+        (<a href="https://github.com/gramps-project/gramps-web-api">https://github.com/gramps-project/gramps-web-api</a>).
+        Unfortunately my experience on the backend is with Ruby on Rails. I tried to use the database schema from
+        Gramps for a new Rails project but they have made what sounds like a bad decision to directly serialize
+        Python objects into the database as blobs. As well as making the API slow it makes it pretty difficult to
+        use from non-Python projects.
+      </p>
+      <p class="text-subtitle1">
+        I found this Ruby on Rails app which I might use:
+        (<a href="https://github.com/mrysav/geneac">https://github.com/mrysav/geneac</a>). It currently does
+        not have an API but that shouldn't be too hard to implement.
+      </p>
+      <p class="text-subtitle1">
+        Another option I'm considering is to create my own backend from scratch using this schema:
+        (<a href="https://github.com/sedelmeyer/family-genealogy-database">https://github.com/sedelmeyer/family-genealogy-database</a>).
+      </p>
+      <p class="text-subtitle1">
+        Once I have a robust backend working I'd like to explore what I can do with a bit of AI and existing
+        genealogy records. I have plenty of fun ideas but first I need to get the basics working ;)
+      </p>
+
+      <div class="text-center">
+        <a href="/static-data" class="demo-link">Demo With Kennedy Family Tree</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

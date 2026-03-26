@@ -1,0 +1,24 @@
+{
+  "name": "astro-genealogy",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Genealogy site built with Astro and Vue",
+  "author": "Ed Tee",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/vue": "^4.2.0",
+    "@mdi/js": "^7.4.47",
+    "astro": "^4.5.0",
+    "qrcode": "^1.5.3",
+    "topola": "^3.6.2",
+    "vue": "^3.4.18"
+  },
+  "engines": {
+    "node": "^22 || ^20 || ^18 || ^16"
+  }
+}

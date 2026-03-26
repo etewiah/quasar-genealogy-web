@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import FamilyTreeApp from '../components/FamilyTreeApp.vue'
+---
+
+<BaseLayout title="Kennedy Family Tree" showSettings={true}>
+  <FamilyTreeApp client:only="vue" />
+</BaseLayout>
