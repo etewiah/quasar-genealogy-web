@@ -62,6 +62,7 @@
 
 import { getFocusedDataFromFirestore, getFirstIndividual } from '../composables/useFirestoreData.js'
 import useLocalConfig from '../composables/useLocalConfig.js'
+import useTopolaData from '../composables/useTopolaData.js'
 
 import TopolaChart from './TopolaChart.vue'
 import TopolaIndividual from './TopolaIndividual.vue'
@@ -113,7 +114,9 @@ export default {
         ? { id: personID }
         : await getFirstIndividual()
 
-      this.topolaJsonData = await getFocusedDataFromFirestore(this.focusedIndi.id)
+      const rawData = await getFocusedDataFromFirestore(this.focusedIndi.id)
+      const { cleanUpTopolaJson } = useTopolaData()
+      this.topolaJsonData = cleanUpTopolaJson(rawData)
       this.focusedIndi = this.topolaJsonData.indis.find(i => i.id === this.focusedIndi.id)
         || this.topolaJsonData.indis[0]
     } catch (err) {

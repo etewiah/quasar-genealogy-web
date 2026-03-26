@@ -32,6 +32,7 @@ import { useRoute } from 'vue-router'
 import TopolaWrapper from 'components/TopolaWrapper.vue'
 import TopolaIndividual from 'components/TopolaIndividual.vue'
 import { getFocusedDataFromFirestore, getFirstIndividual } from 'src/compose/useFirestoreData'
+import useTopolaData from 'src/compose/useTopolaData'
 
 defineOptions({ name: 'TopolaStaticDataPage' })
 
@@ -56,7 +57,9 @@ onMounted(async () => {
       personId = first.id
     }
 
-    const data = await getFocusedDataFromFirestore(personId)
+    const rawData = await getFocusedDataFromFirestore(personId)
+    const { cleanUpTopolaJson } = useTopolaData()
+    const data = cleanUpTopolaJson(rawData)
 
     focusedIndiForGraph.value = data.indis.find(i => i.id === personId) ?? data.indis[0]
     topolaJsonData.value = data
