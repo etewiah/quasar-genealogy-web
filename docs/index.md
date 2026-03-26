@@ -9,3 +9,9 @@
 - [Composables](composables.md) — Reference for `useTopolaData` and `useLocalDataForTopola`
 - [Data Model](data-model.md) — GEDCOM format, topola JSON schema, and how to add new datasets
 - [Roadmap](roadmap.md) — Potential improvements: quick wins, medium-effort features, backend options, and AI features
+- [Extracting Data from a Deployed Build](extracting-deployed-data.md) — How bundled GEDCOM data can be recovered from a live site, and why this matters for privacy
+- [Firestore Backend](firestore/index.md) — Using Firebase as a backend: Storage vs Firestore, migration script, and security rules
+  - [Approach A: Firebase Storage](firestore/approach-a-storage.md)
+  - [Approach B: Firestore Structured Database](firestore/approach-b-firestore.md)
+  - [Migration Script](firestore/migration.md)
+  - [Security & Access Control](firestore/security.md)
