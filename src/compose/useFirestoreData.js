@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, limit, query, where } from 'firebase/firestore'
 import { db } from 'src/boot/firebase'
 
 // The Firestore tree ID to query. This will become configurable once
@@ -89,17 +89,10 @@ export async function getFocusedDataFromFirestore(personId) {
  */
 export async function getFirstIndividual() {
   const snap = await getDocs(
-    query(collection(db, `trees/${TREE_ID}/individuals`), where('famc', '==', null))
+    query(collection(db, `trees/${TREE_ID}/individuals`), limit(1))
   )
-  if (!snap.empty) {
-    const d = snap.docs[0]
-    return { id: d.id, ...d.data() }
-  }
-  // Fallback: just grab any individual
-  const fallback = await getDocs(
-    query(collection(db, `trees/${TREE_ID}/individuals`))
-  )
-  const d = fallback.docs[0]
+  if (snap.empty) throw new Error('No individuals found in tree')
+  const d = snap.docs[0]
   return { id: d.id, ...d.data() }
 }
 
