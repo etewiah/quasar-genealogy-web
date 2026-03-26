@@ -60,8 +60,7 @@
 // component reads the personID from window.location.search, filters the dataset,
 // and mounts fresh. No Vue Router or route-watching is needed.
 
-import kennedyData from '../data/KennedyFamilyData.json'
-import useTopolaData from '../composables/useTopolaData.js'
+import { getFocusedDataFromFirestore, getFirstIndividual } from '../composables/useFirestoreData.js'
 import useLocalConfig from '../composables/useLocalConfig.js'
 
 import TopolaChart from './TopolaChart.vue'
@@ -100,21 +99,26 @@ export default {
       this.topolaConfig = { ...this.topolaConfig, chartColors: val }
     },
   },
-  mounted() {
-    const { getFocusedData, cleanUpTopolaJson } = useTopolaData()
+  async mounted() {
     const { getLocalTopolaConfig } = useLocalConfig()
-
-    // Resolve the focused individual from the URL query param
-    const personID = new URLSearchParams(window.location.search).get('personID')
-    this.focusedIndi =
-      kennedyData.indis.find((i) => i.id === personID) || kennedyData.indis[0]
-
-    // Filter the full dataset to the focused person's immediate family
-    const unfilteredData = getFocusedData(kennedyData, this.focusedIndi)
-    this.topolaJsonData = cleanUpTopolaJson(unfilteredData)
 
     // Load persisted chart config from localStorage
     this.topolaConfig = getLocalTopolaConfig()
+
+    // Resolve the focused individual from the URL query param
+    const personID = new URLSearchParams(window.location.search).get('personID')
+
+    try {
+      this.focusedIndi = personID
+        ? { id: personID }
+        : await getFirstIndividual()
+
+      this.topolaJsonData = await getFocusedDataFromFirestore(this.focusedIndi.id)
+      this.focusedIndi = this.topolaJsonData.indis.find(i => i.id === this.focusedIndi.id)
+        || this.topolaJsonData.indis[0]
+    } catch (err) {
+      console.error('Failed to load family tree from Firestore:', err)
+    }
   },
 }
 </script>
