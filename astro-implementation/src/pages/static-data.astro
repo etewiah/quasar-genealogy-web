@@ -1,8 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import FamilyTreeApp from '../components/FamilyTreeApp.vue'
 ---
 
 <BaseLayout title="Kennedy Family Tree" showSettings={true}>
-  <FamilyTreeApp client:only="vue" />
+  <div id="family-tree-mount"></div>
 </BaseLayout>
+
+<script>
+// Mount FamilyTreeApp as a plain Vue app rather than an Astro island.
+// This bypasses Astro's island hydration system (which requires the
+// astro:scripts/before-hydration.js virtual module in dev mode) while
+// still giving us a fully client-side Vue component tree.
+import { createApp } from 'vue'
+import FamilyTreeApp from '../components/FamilyTreeApp.vue'
+
+const el = document.getElementById('family-tree-mount')
+if (el) createApp(FamilyTreeApp).mount(el)
+</script>
