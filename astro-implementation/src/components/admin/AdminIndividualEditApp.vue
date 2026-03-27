@@ -154,14 +154,20 @@ const breadcrumbs = computed(() => {
   ]
 })
 
+function extractDateText(val) {
+  if (!val) return ''
+  if (typeof val === 'string') return val
+  return val.text ?? ''
+}
+
 onMounted(async () => {
   try {
     const indi = await getIndividual(id)
     form.value = {
       ...indi,
       sex:   indi.sex ?? '',
-      birth: { date: '', place: '', ...indi.birth },
-      death: { date: '', place: '', ...indi.death },
+      birth: { place: '', ...indi.birth, date: extractDateText(indi.birth?.date) },
+      death: { place: '', ...indi.death, date: extractDateText(indi.death?.date) },
     }
   } finally {
     loading.value = false
@@ -177,8 +183,8 @@ async function handleSave() {
       firstName: form.value.firstName,
       lastName:  form.value.lastName,
       sex:       form.value.sex,
-      birth:     { date: form.value.birth.date, place: form.value.birth.place },
-      death:     { date: form.value.death.date, place: form.value.death.place },
+      birth:     { date: { text: form.value.birth.date }, place: form.value.birth.place },
+      death:     { date: { text: form.value.death.date }, place: form.value.death.place },
       living:    form.value.living,
     })
     saved.value = true
