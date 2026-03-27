@@ -57,7 +57,9 @@ if (!authed.value) {
 }
 
 function isActive(path) {
-  return window.location.pathname.startsWith(path)
+  const pathname = window.location.pathname
+  if (pathname.startsWith('/admin/individual-edit')) return path === '/admin/individuals'
+  return pathname.startsWith(path)
 }
 
 function handleLogout() {

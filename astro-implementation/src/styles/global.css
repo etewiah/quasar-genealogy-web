@@ -494,6 +494,86 @@ h1, h2, h3 { margin: 0 0 16px; }
 .admin-login-form .admin-btn-primary { margin-top: 4px; text-align: center; width: 100%; }
 .admin-login-card > .admin-back-link { display: block; text-align: center; margin-top: 20px; }
 
+/* Breadcrumbs */
+.admin-breadcrumbs { font-size: 0.8rem; color: #888; margin-bottom: 12px; }
+.admin-breadcrumbs a { color: #1976d2; text-decoration: none; }
+.admin-breadcrumbs a:hover { text-decoration: underline; }
+.admin-breadcrumb-sep { margin: 0 2px; }
+.admin-breadcrumb-current { color: #333; }
+
+/* Page header with view link */
+.admin-page-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+.admin-page-header .admin-page-title { margin: 0; }
+.admin-view-link { font-size: 0.8rem; color: #1976d2; text-decoration: none; white-space: nowrap; }
+.admin-view-link:hover { text-decoration: underline; }
+
+/* Filter chips */
+.admin-filter-bar { display: flex; gap: 8px; margin-bottom: 16px; }
+.admin-filter-chip {
+  padding: 5px 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  background: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.15s;
+}
+.admin-filter-chip:hover { border-color: #1976d2; color: #1976d2; }
+.admin-filter-chip.active { background: #1976d2; border-color: #1976d2; color: #fff; }
+
+/* Count hint inline with pagination */
+.admin-count-hint { color: #999; font-size: 0.8rem; }
+
+/* Clickable table rows */
+.admin-table-row--clickable { cursor: pointer; }
+.admin-table-row--clickable:hover td { background: #f0f7ff; }
+
+/* Dashboard living stat */
+.admin-stat-value--living { color: #e65100; }
+
+/* Warning banner */
+.admin-warning-banner { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; border-radius: 4px; padding: 10px 14px; font-size: 0.875rem; margin-bottom: 16px; }
+
+/* Links inside cards */
+.admin-link { color: #1976d2; text-decoration: none; }
+.admin-link:hover { text-decoration: underline; }
+
+/* Select field */
+.admin-field select,
+.admin-select {
+  padding: 9px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  max-width: 220px;
+}
+.admin-field select:focus,
+.admin-select:focus { border-color: #1976d2; box-shadow: 0 0 0 2px rgba(25,118,210,0.15); }
+
+/* Skeleton loading */
+.admin-skeleton-row td { vertical-align: middle; }
+.admin-skeleton-cell {
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite;
+}
+.admin-skeleton-cell--sm    { width: 80px; }
+.admin-skeleton-cell--badge { width: 60px; height: 18px; border-radius: 10px; }
+.admin-skeleton-cell--label { height: 11px; width: 60px; margin-bottom: 8px; }
+.admin-skeleton-cell--value { height: 32px; width: 80px; }
+.admin-skeleton-cell--title { height: 14px; width: 100px; margin-bottom: 16px; }
+.admin-skeleton-cell--input { height: 38px; border-radius: 4px; }
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .admin-nav { transform: translateX(-100%); }

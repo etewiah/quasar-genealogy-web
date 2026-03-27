@@ -93,17 +93,40 @@ const enrichedIndis = indis.map(indi => ({
   living: !indi.death?.date && !indi.death?.place,
 }))
 
+const livingCount = enrichedIndis.filter(i => i.living).length
+
+// Build id → indi map for family denormalization
+const indiMap = {}
+for (const indi of enrichedIndis) {
+  indiMap[sanitizeId(indi.id)] = indi
+}
+
+function formatName(indi) {
+  if (!indi) return null
+  const first = indi.firstName ?? ''
+  const last  = indi.lastName  ?? ''
+  return [first, last].filter(Boolean).join(' ') || null
+}
+
+// Enrich families with denormalized husband/wife names for the admin search
+const enrichedFams = fams.map(fam => ({
+  ...fam,
+  husbName: formatName(fam.husb ? indiMap[sanitizeId(fam.husb)] : null),
+  wifeName: formatName(fam.wife ? indiMap[sanitizeId(fam.wife)] : null),
+}))
+
 // ─── Write to Firestore ───────────────────────────────────────────────────────
 
 const treePath = `trees/${args.tree}`
 
 // Tree metadata document
 await db.doc(treePath).set({
-  name: args.tree,
+  name:             args.tree,
   individualsCount: indis.length,
-  familiesCount: fams.length,
-  importedAt: admin.firestore.FieldValue.serverTimestamp(),
-  sourceFile: args.ged.split('/').pop(),
+  livingCount,
+  familiesCount:    fams.length,
+  importedAt:       admin.firestore.FieldValue.serverTimestamp(),
+  sourceFile:       args.ged.split('/').pop(),
 })
 console.log(`Tree metadata written to ${treePath}\n`)
 
@@ -111,7 +134,7 @@ console.log('Writing individuals...')
 await writeInBatches(`${treePath}/individuals`, enrichedIndis)
 
 console.log('\nWriting families...')
-await writeInBatches(`${treePath}/families`, fams)
+await writeInBatches(`${treePath}/families`, enrichedFams)
 
 console.log('\nDone.')
 process.exit(0)

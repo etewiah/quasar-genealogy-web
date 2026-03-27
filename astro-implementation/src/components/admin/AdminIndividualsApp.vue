@@ -12,7 +12,47 @@
       />
     </div>
 
-    <div v-if="loading" class="admin-spinner-inline"></div>
+    <div v-if="!searchTerm" class="admin-filter-bar">
+      <button
+        class="admin-filter-chip"
+        :class="{ active: livingFilter === null }"
+        @click="setFilter(null)"
+      >All</button>
+      <button
+        class="admin-filter-chip"
+        :class="{ active: livingFilter === true }"
+        @click="setFilter(true)"
+      >Living</button>
+      <button
+        class="admin-filter-chip"
+        :class="{ active: livingFilter === false }"
+        @click="setFilter(false)"
+      >Deceased</button>
+    </div>
+
+    <!-- Skeleton loading -->
+    <div v-if="loading" class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Birth Date</th>
+            <th>Death Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="n in 10" :key="n" class="admin-skeleton-row">
+            <td><div class="admin-skeleton-cell"></div></td>
+            <td><div class="admin-skeleton-cell"></div></td>
+            <td><div class="admin-skeleton-cell admin-skeleton-cell--sm"></div></td>
+            <td><div class="admin-skeleton-cell admin-skeleton-cell--sm"></div></td>
+            <td><div class="admin-skeleton-cell admin-skeleton-cell--badge"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div v-else>
       <div class="admin-table-wrap">
@@ -22,28 +62,35 @@
               <th>Last Name</th>
               <th>First Name</th>
               <th>Birth Date</th>
-              <th>Birth Place</th>
+              <th>Death Date</th>
               <th>Status</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="row in rows" :key="row.id">
+            <tr
+              v-for="row in rows"
+              :key="row.id"
+              class="admin-table-row--clickable"
+              @click="goToEdit(row.id)"
+            >
               <td>{{ row.lastName }}</td>
               <td>{{ row.firstName }}</td>
               <td>{{ row.birth?.date ?? '' }}</td>
-              <td>{{ row.birth?.place ?? '' }}</td>
+              <td>{{ row.death?.date ?? '' }}</td>
               <td>
-                <span class="admin-badge" :class="row.living ? 'admin-badge--living' : 'admin-badge--deceased'">
+                <span
+                  class="admin-badge"
+                  :class="row.living ? 'admin-badge--living' : 'admin-badge--deceased'"
+                >
                   {{ row.living ? 'Living' : 'Deceased' }}
                 </span>
               </td>
-              <td class="admin-table-actions">
-                <a :href="`/admin/individual-edit?id=${row.id}`" class="admin-table-edit-btn">Edit</a>
-              </td>
             </tr>
             <tr v-if="rows.length === 0">
-              <td colspan="6" class="admin-table-empty">No results found.</td>
+              <td colspan="5" class="admin-table-empty">
+                <template v-if="searchTerm">No individuals match "{{ searchTerm }}".</template>
+                <template v-else>No individuals found.</template>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -56,7 +103,12 @@
           :disabled="pageHistory.length === 0"
           @click="prevPage"
         >← Previous</button>
-        <span class="admin-page-indicator">Page {{ currentPage }}</span>
+        <span class="admin-page-indicator">
+          Page {{ currentPage }}
+          <span v-if="totalCount !== null" class="admin-count-hint">
+            · {{ totalCount.toLocaleString() }} total
+          </span>
+        </span>
         <button
           class="admin-btn-outline"
           :disabled="!hasMore"
@@ -74,23 +126,33 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import AdminShell from './AdminShell.vue'
-import { getIndividualsPage, searchIndividuals } from '../../composables/useAdminFirestore.js'
+import {
+  getIndividualsPage, searchIndividuals, getTreeMetadata,
+} from '../../composables/useAdminFirestore.js'
 
-const rows        = ref([])
-const loading     = ref(false)
-const hasMore     = ref(false)
-const currentPage = ref(1)
-const pageHistory = ref([])
-const lastDoc     = ref(null)
-const searchTerm  = ref('')
-let searchTimer   = null
+const rows         = ref([])
+const loading      = ref(false)
+const hasMore      = ref(false)
+const currentPage  = ref(1)
+const pageHistory  = ref([])
+const lastDoc      = ref(null)
+const searchTerm   = ref('')
+const livingFilter = ref(null)
+const totalCount   = ref(null)
+let searchTimer    = null
 
-onMounted(() => loadPage())
+onMounted(async () => {
+  const [, meta] = await Promise.all([
+    loadPage(),
+    getTreeMetadata(),
+  ])
+  totalCount.value = meta?.individualsCount ?? null
+})
 
 async function loadPage(cursor = null) {
   loading.value = true
   try {
-    const result = await getIndividualsPage(cursor)
+    const result = await getIndividualsPage(cursor, livingFilter.value)
     rows.value    = result.items
     lastDoc.value = result.lastDoc
     hasMore.value = result.hasMore
@@ -112,6 +174,13 @@ async function prevPage() {
   await loadPage(prev)
 }
 
+function setFilter(value) {
+  livingFilter.value = value
+  currentPage.value  = 1
+  pageHistory.value  = []
+  loadPage()
+}
+
 function onSearch() {
   clearTimeout(searchTimer)
   const term = searchTerm.value.trim()
@@ -126,5 +195,9 @@ function onSearch() {
     try { rows.value = await searchIndividuals(term) }
     finally { loading.value = false }
   }, 300)
+}
+
+function goToEdit(id) {
+  window.location.href = `/admin/individual-edit?id=${encodeURIComponent(id)}`
 }
 </script>

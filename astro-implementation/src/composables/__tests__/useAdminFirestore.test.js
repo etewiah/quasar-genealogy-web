@@ -24,11 +24,13 @@ import {
 } from 'firebase/firestore'
 import {
   getTreeMetadata,
+  getFirstIndividualId,
   getIndividualsPage,
   searchIndividuals,
   getIndividual,
   updateIndividual,
   getFamiliesPage,
+  searchFamilies,
 } from '../useAdminFirestore.js'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -72,6 +74,30 @@ describe('getTreeMetadata', () => {
       expect.stringContaining('trees'),
       expect.stringContaining('campbells')
     )
+  })
+})
+
+// ─── getFirstIndividualId ─────────────────────────────────────────────────────
+
+describe('getFirstIndividualId', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  it('returns the id of the first document', async () => {
+    getDocs.mockResolvedValueOnce(fakeSnap([fakeDoc('I999', {})]))
+    const result = await getFirstIndividualId()
+    expect(result).toBe('I999')
+  })
+
+  it('returns null when the collection is empty', async () => {
+    getDocs.mockResolvedValueOnce(fakeSnap([]))
+    const result = await getFirstIndividualId()
+    expect(result).toBeNull()
+  })
+
+  it('uses limit(1)', async () => {
+    getDocs.mockResolvedValueOnce(fakeSnap([]))
+    await getFirstIndividualId()
+    expect(limit).toHaveBeenCalledWith(1)
   })
 })
 
@@ -152,6 +178,24 @@ describe('getIndividualsPage', () => {
     await getIndividualsPage()
     expect(orderBy).toHaveBeenCalledWith('lastName')
     expect(orderBy).toHaveBeenCalledWith('firstName')
+  })
+
+  it('adds a where clause when livingFilter is true', async () => {
+    getDocs.mockResolvedValueOnce(fakeSnap([]))
+    await getIndividualsPage(null, true)
+    expect(where).toHaveBeenCalledWith('living', '==', true)
+  })
+
+  it('adds a where clause when livingFilter is false', async () => {
+    getDocs.mockResolvedValueOnce(fakeSnap([]))
+    await getIndividualsPage(null, false)
+    expect(where).toHaveBeenCalledWith('living', '==', false)
+  })
+
+  it('does not add a where clause when livingFilter is null', async () => {
+    getDocs.mockResolvedValueOnce(fakeSnap([]))
+    await getIndividualsPage(null, null)
+    expect(where).not.toHaveBeenCalled()
   })
 })
 
@@ -355,5 +399,62 @@ describe('getFamiliesPage', () => {
     getDocs.mockResolvedValueOnce(fakeSnap([]))
     await getFamiliesPage(null)
     expect(startAfter).not.toHaveBeenCalled()
+  })
+})
+
+// ─── searchFamilies ───────────────────────────────────────────────────────────
+
+describe('searchFamilies', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  it('returns empty array for empty search term', async () => {
+    const results = await searchFamilies('')
+    expect(results).toEqual([])
+    expect(getDocs).not.toHaveBeenCalled()
+  })
+
+  it('runs two parallel queries (husbName and wifeName)', async () => {
+    getDocs.mockResolvedValue(fakeSnap([]))
+    await searchFamilies('camp')
+    expect(getDocs).toHaveBeenCalledTimes(2)
+  })
+
+  it('uses prefix range on husbName', async () => {
+    getDocs.mockResolvedValue(fakeSnap([]))
+    await searchFamilies('john')
+    expect(where).toHaveBeenCalledWith('husbName', '>=', 'john')
+    expect(where).toHaveBeenCalledWith('husbName', '<',  'john\uf8ff')
+  })
+
+  it('uses prefix range on wifeName', async () => {
+    getDocs.mockResolvedValue(fakeSnap([]))
+    await searchFamilies('mary')
+    expect(where).toHaveBeenCalledWith('wifeName', '>=', 'mary')
+    expect(where).toHaveBeenCalledWith('wifeName', '<',  'mary\uf8ff')
+  })
+
+  it('merges results from both queries', async () => {
+    getDocs
+      .mockResolvedValueOnce(fakeSnap([fakeDoc('F1', { husbName: 'John C', wifeName: null })]))
+      .mockResolvedValueOnce(fakeSnap([fakeDoc('F2', { husbName: null, wifeName: 'Mary C' })]))
+    const results = await searchFamilies('c')
+    expect(results).toHaveLength(2)
+    expect(results.map(r => r.id)).toContain('F1')
+    expect(results.map(r => r.id)).toContain('F2')
+  })
+
+  it('deduplicates families appearing in both queries', async () => {
+    const dup = fakeDoc('F1', { husbName: 'Carl Carl', wifeName: 'Carl Carl' })
+    getDocs
+      .mockResolvedValueOnce(fakeSnap([dup]))
+      .mockResolvedValueOnce(fakeSnap([dup]))
+    const results = await searchFamilies('carl')
+    expect(results).toHaveLength(1)
+  })
+
+  it('uses limit(50) per query', async () => {
+    getDocs.mockResolvedValue(fakeSnap([]))
+    await searchFamilies('test')
+    expect(limit).toHaveBeenCalledWith(50)
   })
 })

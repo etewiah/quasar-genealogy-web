@@ -17,27 +17,35 @@ export async function getTreeMetadata() {
   return snap.exists() ? { id: snap.id, ...snap.data() } : null
 }
 
-// ─── Individuals ─────────────────────────────────────────────────────────────
-
-export async function getIndividualsPage(cursorDoc = null) {
-  let q = query(
+export async function getFirstIndividualId() {
+  const q = query(
     collection(db, `trees/${TREE_ID}/individuals`),
     orderBy('lastName'),
     orderBy('firstName'),
-    limit(PAGE_SIZE)
+    limit(1)
   )
-  if (cursorDoc) {
-    q = query(
-      collection(db, `trees/${TREE_ID}/individuals`),
-      orderBy('lastName'),
-      orderBy('firstName'),
-      startAfter(cursorDoc),
-      limit(PAGE_SIZE)
-    )
-  }
+  const snap = await getDocs(q)
+  return snap.docs[0]?.id ?? null
+}
+
+// ─── Individuals ─────────────────────────────────────────────────────────────
+
+/**
+ * @param {object|null} cursorDoc  - Firestore DocumentSnapshot to paginate after
+ * @param {boolean|null} livingFilter - true = living only, false = deceased only, null = all
+ */
+export async function getIndividualsPage(cursorDoc = null, livingFilter = null) {
+  const constraints = [
+    ...(livingFilter !== null ? [where('living', '==', livingFilter)] : []),
+    orderBy('lastName'),
+    orderBy('firstName'),
+    ...(cursorDoc ? [startAfter(cursorDoc)] : []),
+    limit(PAGE_SIZE),
+  ]
+  const q = query(collection(db, `trees/${TREE_ID}/individuals`), ...constraints)
   const snap = await getDocs(q)
   return {
-    items: snap.docs.map(d => ({ id: d.id, _snap: d, ...d.data() })),
+    items:   snap.docs.map(d => ({ id: d.id, _snap: d, ...d.data() })),
     lastDoc: snap.docs[snap.docs.length - 1] ?? null,
     hasMore: snap.docs.length === PAGE_SIZE,
   }
@@ -85,23 +93,42 @@ export async function updateIndividual(id, updates) {
 // ─── Families ────────────────────────────────────────────────────────────────
 
 export async function getFamiliesPage(cursorDoc = null) {
-  let q = query(
-    collection(db, `trees/${TREE_ID}/families`),
+  const constraints = [
     orderBy('__name__'),
-    limit(PAGE_SIZE)
-  )
-  if (cursorDoc) {
-    q = query(
-      collection(db, `trees/${TREE_ID}/families`),
-      orderBy('__name__'),
-      startAfter(cursorDoc),
-      limit(PAGE_SIZE)
-    )
-  }
+    ...(cursorDoc ? [startAfter(cursorDoc)] : []),
+    limit(PAGE_SIZE),
+  ]
+  const q = query(collection(db, `trees/${TREE_ID}/families`), ...constraints)
   const snap = await getDocs(q)
   return {
-    items: snap.docs.map(d => ({ id: d.id, _snap: d, ...d.data() })),
+    items:   snap.docs.map(d => ({ id: d.id, _snap: d, ...d.data() })),
     lastDoc: snap.docs[snap.docs.length - 1] ?? null,
     hasMore: snap.docs.length === PAGE_SIZE,
   }
+}
+
+export async function searchFamilies(term) {
+  if (!term) return []
+  const end = term + '\uf8ff'
+  const [byHusb, byWife] = await Promise.all([
+    getDocs(query(
+      collection(db, `trees/${TREE_ID}/families`),
+      where('husbName', '>=', term),
+      where('husbName', '<', end),
+      orderBy('husbName'),
+      limit(50)
+    )),
+    getDocs(query(
+      collection(db, `trees/${TREE_ID}/families`),
+      where('wifeName', '>=', term),
+      where('wifeName', '<', end),
+      orderBy('wifeName'),
+      limit(50)
+    )),
+  ])
+  const all = [
+    ...byHusb.docs.map(d => ({ id: d.id, ...d.data() })),
+    ...byWife.docs.map(d => ({ id: d.id, ...d.data() })),
+  ]
+  return Object.values(Object.fromEntries(all.map(f => [f.id, f])))
 }

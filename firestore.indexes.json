@@ -7,6 +7,15 @@
         { "fieldPath": "lastName",  "order": "ASCENDING" },
         { "fieldPath": "firstName", "order": "ASCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "individuals",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "living",    "order": "ASCENDING" },
+        { "fieldPath": "lastName",  "order": "ASCENDING" },
+        { "fieldPath": "firstName", "order": "ASCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []
