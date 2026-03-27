@@ -1,5 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from 'src/boot/firebase'
 import routes from './routes'
 
 /*
@@ -24,6 +26,18 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE)
+  })
+
+  // Wait for Firebase Auth to resolve before evaluating guards
+  function getCurrentUser() {
+    return new Promise(resolve => onAuthStateChanged(auth, resolve, resolve))
+  }
+
+  Router.beforeEach(async (to) => {
+    if (!to.meta.requiresAuth) return true
+    const user = await getCurrentUser()
+    if (!user) return { name: 'rAdminLogin' }
+    return true
   })
 
   return Router
