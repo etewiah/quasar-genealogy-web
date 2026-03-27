@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app'
+import { initializeApp, getApps, getApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -8,5 +8,5 @@ const firebaseConfig = {
   appId:      import.meta.env.PUBLIC_FIREBASE_APP_ID,
 }
 
-const firebaseApp = initializeApp(firebaseConfig)
+const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig)
 export const db = getFirestore(firebaseApp)
