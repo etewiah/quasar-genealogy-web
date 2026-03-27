@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test": "echo \"No test specified\" && exit 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "dev": "quasar dev",
     "build": "quasar build"
   },
@@ -26,14 +27,17 @@
   },
   "devDependencies": {
     "@quasar/app-vite": "^1.8.0",
+    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
     "firebase-admin": "^13.7.0",
+    "jsdom": "^29.0.1",
     "postcss": "^8.4.14",
     "prettier": "^2.5.1",
-    "vite-plugin-checker": "^0.6.4"
+    "vite-plugin-checker": "^0.6.4",
+    "vitest": "^4.1.2"
   },
   "engines": {
     "node": "^20 || ^18 || ^16",
