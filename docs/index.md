@@ -15,3 +15,7 @@
   - [Approach B: Firestore Structured Database](firestore/approach-b-firestore.md)
   - [Migration Script](firestore/migration.md)
   - [Security & Access Control](firestore/security.md)
+- [Admin Interface](admin/index.md) — Password-protected admin for browsing and editing Firestore data
+  - [Architecture](admin/architecture.md) — Auth flow, Astro mounting pattern, pagination, search, env vars
+  - [Improvements](admin/improvements.md) — Prioritised spec for all identified UI/UX improvements
+  - [Testing](admin/testing.md) — Test suites, mocking strategy, and coverage guide
