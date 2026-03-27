@@ -1,0 +1,22 @@
+---
+import '../../styles/global.css'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — Families</title>
+  </head>
+  <body>
+    <div id="admin-mount"></div>
+  </body>
+</html>
+
+<script>
+import { createApp } from 'vue'
+import AdminFamiliesApp from '../../components/admin/AdminFamiliesApp.vue'
+const el = document.getElementById('admin-mount')
+if (el) createApp(AdminFamiliesApp).mount(el)
+</script>

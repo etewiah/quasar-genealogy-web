@@ -1,0 +1,22 @@
+---
+import '../../styles/global.css'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Sign In</title>
+  </head>
+  <body>
+    <div id="admin-login-mount"></div>
+  </body>
+</html>
+
+<script>
+import { createApp } from 'vue'
+import AdminLoginApp from '../../components/admin/AdminLoginApp.vue'
+const el = document.getElementById('admin-login-mount')
+if (el) createApp(AdminLoginApp).mount(el)
+</script>
