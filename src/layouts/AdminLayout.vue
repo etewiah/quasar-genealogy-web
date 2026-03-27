@@ -31,10 +31,6 @@
 
       <q-separator />
 
-      <div class="q-pa-md text-caption text-grey">
-        Signed in as<br>
-        <strong>{{ user?.email }}</strong>
-      </div>
     </q-drawer>
 
     <q-page-container>
@@ -51,11 +47,11 @@ import { useAuth } from 'src/compose/useAuth'
 defineOptions({ name: 'AdminLayout' })
 
 const router = useRouter()
-const { user, logout } = useAuth()
+const { logout } = useAuth()
 const drawerOpen = ref(false)
 
-async function handleLogout() {
-  await logout()
+function handleLogout() {
+  logout()
   router.push({ name: 'rAdminLogin' })
 }
 </script>

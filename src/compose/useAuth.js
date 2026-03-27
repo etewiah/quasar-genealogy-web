@@ -1,24 +1,20 @@
-import { ref } from 'vue'
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'src/boot/firebase'
-
-// Singleton reactive user — shared across all components
-const user = ref(null)
-const authReady = ref(false)
-
-onAuthStateChanged(auth, (firebaseUser) => {
-  user.value = firebaseUser
-  authReady.value = true
-})
+const SESSION_KEY = 'admin_authed'
 
 export function useAuth() {
-  async function login(email, password) {
-    await signInWithEmailAndPassword(auth, email, password)
+  function isAuthed() {
+    return sessionStorage.getItem(SESSION_KEY) === '1'
   }
 
-  async function logout() {
-    await signOut(auth)
+  function login(password) {
+    const expected = import.meta.env.VITE_MGMT_PASSWORD
+    if (!expected) throw new Error('VITE_MGMT_PASSWORD is not set')
+    if (password !== expected) throw new Error('Incorrect password')
+    sessionStorage.setItem(SESSION_KEY, '1')
   }
 
-  return { user, authReady, login, logout }
+  function logout() {
+    sessionStorage.removeItem(SESSION_KEY)
+  }
+
+  return { isAuthed, login, logout }
 }
