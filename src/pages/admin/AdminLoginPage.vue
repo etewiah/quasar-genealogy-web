@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center bg-grey-2">
+  <div class="fullscreen flex flex-center bg-grey-2">
     <q-card style="min-width: 360px" class="q-pa-md">
       <q-card-section>
         <div class="text-h6">Admin Sign In</div>
@@ -36,7 +36,7 @@
         </q-form>
       </q-card-section>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script setup>
