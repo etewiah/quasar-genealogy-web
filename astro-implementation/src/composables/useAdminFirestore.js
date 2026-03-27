@@ -107,6 +107,49 @@ export async function getFamiliesPage(cursorDoc = null) {
   }
 }
 
+export async function getFamily(id) {
+  const snap = await getDoc(doc(db, `trees/${TREE_ID}/families`, id))
+  if (!snap.exists()) throw new Error(`Family not found: ${id}`)
+  return { id: snap.id, ...snap.data() }
+}
+
+/**
+ * Fetch multiple individuals by ID in parallel.
+ * Missing documents are returned as null (not thrown).
+ */
+export async function getIndividualsByIds(ids) {
+  if (!ids?.length) return []
+  const snaps = await Promise.all(
+    ids.map(id => getDoc(doc(db, `trees/${TREE_ID}/individuals`, id)))
+  )
+  return snaps
+    .filter(s => s.exists())
+    .map(s => ({ id: s.id, ...s.data() }))
+}
+
+/**
+ * Fetch a family document plus all related individuals (husb, wife, children)
+ * in a single round of parallel reads.
+ */
+export async function getFamilyDetail(id) {
+  const family = await getFamily(id)
+  const memberIds = [
+    family.husb,
+    family.wife,
+    ...(family.children ?? []),
+  ].filter(Boolean)
+
+  const members = await getIndividualsByIds(memberIds)
+  const byId = Object.fromEntries(members.map(m => [m.id, m]))
+
+  return {
+    family,
+    husb:     family.husb  ? (byId[family.husb]  ?? null) : null,
+    wife:     family.wife  ? (byId[family.wife]  ?? null) : null,
+    children: (family.children ?? []).map(cid => byId[cid] ?? { id: cid }),
+  }
+}
+
 export async function searchFamilies(term) {
   if (!term) return []
   const end = term + '\uf8ff'

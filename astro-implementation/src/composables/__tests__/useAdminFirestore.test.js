@@ -31,6 +31,9 @@ import {
   updateIndividual,
   getFamiliesPage,
   searchFamilies,
+  getFamily,
+  getIndividualsByIds,
+  getFamilyDetail,
 } from '../useAdminFirestore.js'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -456,5 +459,143 @@ describe('searchFamilies', () => {
     getDocs.mockResolvedValue(fakeSnap([]))
     await searchFamilies('test')
     expect(limit).toHaveBeenCalledWith(50)
+  })
+})
+
+// ─── getFamily ────────────────────────────────────────────────────────────────
+
+describe('getFamily', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  it('returns id + data when document exists', async () => {
+    getDoc.mockResolvedValueOnce(
+      fakeDoc('F1', { husb: 'I1', wife: 'I2', children: ['I3'] })
+    )
+    const result = await getFamily('F1')
+    expect(result.id).toBe('F1')
+    expect(result.husb).toBe('I1')
+  })
+
+  it('throws when document does not exist', async () => {
+    getDoc.mockResolvedValueOnce(fakeDoc('F_NONE', {}, false))
+    await expect(getFamily('F_NONE')).rejects.toThrow('Family not found: F_NONE')
+  })
+
+  it('queries the correct families path', async () => {
+    getDoc.mockResolvedValueOnce(fakeDoc('F1', {}))
+    await getFamily('F1')
+    expect(doc).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.stringContaining('families'),
+      'F1'
+    )
+  })
+})
+
+// ─── getIndividualsByIds ──────────────────────────────────────────────────────
+
+describe('getIndividualsByIds', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  it('returns empty array for empty input', async () => {
+    const result = await getIndividualsByIds([])
+    expect(result).toEqual([])
+    expect(getDoc).not.toHaveBeenCalled()
+  })
+
+  it('returns empty array for null input', async () => {
+    const result = await getIndividualsByIds(null)
+    expect(result).toEqual([])
+  })
+
+  it('fetches all IDs in parallel', async () => {
+    getDoc
+      .mockResolvedValueOnce(fakeDoc('I1', { firstName: 'Alice' }))
+      .mockResolvedValueOnce(fakeDoc('I2', { firstName: 'Bob' }))
+    const result = await getIndividualsByIds(['I1', 'I2'])
+    expect(result).toHaveLength(2)
+    expect(getDoc).toHaveBeenCalledTimes(2)
+  })
+
+  it('silently omits documents that do not exist', async () => {
+    getDoc
+      .mockResolvedValueOnce(fakeDoc('I1', { firstName: 'Alice' }))
+      .mockResolvedValueOnce(fakeDoc('I_MISSING', {}, false))
+    const result = await getIndividualsByIds(['I1', 'I_MISSING'])
+    expect(result).toHaveLength(1)
+    expect(result[0].id).toBe('I1')
+  })
+
+  it('merges id into each returned object', async () => {
+    getDoc.mockResolvedValueOnce(fakeDoc('I5', { firstName: 'Eve' }))
+    const result = await getIndividualsByIds(['I5'])
+    expect(result[0].id).toBe('I5')
+    expect(result[0].firstName).toBe('Eve')
+  })
+})
+
+// ─── getFamilyDetail ──────────────────────────────────────────────────────────
+
+describe('getFamilyDetail', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  const famData = { husb: 'I1', wife: 'I2', children: ['I3', 'I4'] }
+  const husbData  = { firstName: 'John', lastName: 'Campbell' }
+  const wifeData  = { firstName: 'Mary', lastName: 'Campbell' }
+  const child1Data = { firstName: 'Ann', lastName: 'Campbell', living: false }
+  const child2Data = { firstName: 'Tom', lastName: 'Campbell', living: true }
+
+  function setupHappyPath() {
+    // getFamily call
+    getDoc.mockResolvedValueOnce(fakeDoc('F1', famData))
+    // getIndividualsByIds: 4 parallel getDoc calls
+    getDoc
+      .mockResolvedValueOnce(fakeDoc('I1', husbData))
+      .mockResolvedValueOnce(fakeDoc('I2', wifeData))
+      .mockResolvedValueOnce(fakeDoc('I3', child1Data))
+      .mockResolvedValueOnce(fakeDoc('I4', child2Data))
+  }
+
+  it('returns family, husb, wife, and children', async () => {
+    setupHappyPath()
+    const result = await getFamilyDetail('F1')
+    expect(result.family.id).toBe('F1')
+    expect(result.husb.id).toBe('I1')
+    expect(result.wife.id).toBe('I2')
+    expect(result.children).toHaveLength(2)
+  })
+
+  it('children retain their IDs', async () => {
+    setupHappyPath()
+    const { children } = await getFamilyDetail('F1')
+    expect(children.map(c => c.id)).toEqual(['I3', 'I4'])
+  })
+
+  it('sets husb to null when family has no husband', async () => {
+    getDoc.mockResolvedValueOnce(fakeDoc('F2', { husb: null, wife: 'I2', children: [] }))
+    getDoc.mockResolvedValueOnce(fakeDoc('I2', wifeData))
+    const { husb } = await getFamilyDetail('F2')
+    expect(husb).toBeNull()
+  })
+
+  it('sets wife to null when family has no wife', async () => {
+    getDoc.mockResolvedValueOnce(fakeDoc('F3', { husb: 'I1', wife: null, children: [] }))
+    getDoc.mockResolvedValueOnce(fakeDoc('I1', husbData))
+    const { wife } = await getFamilyDetail('F3')
+    expect(wife).toBeNull()
+  })
+
+  it('returns empty children array for a childless family', async () => {
+    getDoc.mockResolvedValueOnce(fakeDoc('F4', { husb: 'I1', wife: 'I2', children: [] }))
+    getDoc
+      .mockResolvedValueOnce(fakeDoc('I1', husbData))
+      .mockResolvedValueOnce(fakeDoc('I2', wifeData))
+    const { children } = await getFamilyDetail('F4')
+    expect(children).toHaveLength(0)
+  })
+
+  it('throws when family document does not exist', async () => {
+    getDoc.mockResolvedValueOnce(fakeDoc('F_NONE', {}, false))
+    await expect(getFamilyDetail('F_NONE')).rejects.toThrow('Family not found: F_NONE')
   })
 })

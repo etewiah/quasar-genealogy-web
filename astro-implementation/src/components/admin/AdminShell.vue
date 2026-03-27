@@ -59,6 +59,7 @@ if (!authed.value) {
 function isActive(path) {
   const pathname = window.location.pathname
   if (pathname.startsWith('/admin/individual-edit')) return path === '/admin/individuals'
+  if (pathname.startsWith('/admin/family')) return path === '/admin/families'
   return pathname.startsWith(path)
 }
 

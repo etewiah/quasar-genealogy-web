@@ -46,7 +46,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="row in rows" :key="row.id">
+            <tr
+              v-for="row in rows"
+              :key="row.id"
+              class="admin-table-row--clickable"
+              @click="goToDetail(row.id)"
+            >
               <td><code>{{ row.id }}</code></td>
               <td>{{ row.husbName ?? row.husb ?? '—' }}</td>
               <td>{{ row.wifeName ?? row.wife ?? '—' }}</td>
@@ -123,6 +128,10 @@ async function prevPage() {
   currentPage.value--
   const prev = pageHistory.value[pageHistory.value.length - 1] ?? null
   await loadPage(prev)
+}
+
+function goToDetail(id) {
+  window.location.href = `/admin/family?id=${encodeURIComponent(id)}`
 }
 
 function onSearch() {

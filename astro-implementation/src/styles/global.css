@@ -574,6 +574,16 @@ h1, h2, h3 { margin: 0 0 16px; }
   100% { background-position: -200% 0; }
 }
 
+/* Family detail */
+.admin-family-spouses { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.admin-family-spouse-card { display: flex; flex-direction: column; gap: 6px; }
+.admin-family-member-name { font-size: 1.05rem; font-weight: 600; color: #1a1a2e; }
+.admin-family-member-dates { font-size: 0.82rem; color: #888; }
+.admin-family-member-actions { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.admin-family-member-none { color: #aaa; font-style: italic; font-size: 0.875rem; margin: 0; }
+.admin-btn--sm { padding: 5px 12px; font-size: 0.8rem; }
+.admin-section-count { display: inline-block; background: #e8eaf6; color: #3949ab; border-radius: 10px; font-size: 0.72rem; font-weight: 600; padding: 1px 7px; margin-left: 6px; vertical-align: middle; }
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .admin-nav { transform: translateX(-100%); }
@@ -584,4 +594,5 @@ h1, h2, h3 { margin: 0 0 16px; }
   .admin-main { margin-left: 0; }
   .admin-content { padding: 20px 16px; }
   .admin-field-row { grid-template-columns: 1fr; }
+  .admin-family-spouses { grid-template-columns: 1fr; }
 }
