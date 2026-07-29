@@ -6,7 +6,7 @@
       <h2 class="admin-page-title">Family {{ id }}</h2>
       <a
         v-if="detail?.husb"
-        :href="`/?indi=${encodeURIComponent(detail.husb.id)}`"
+        :href="`/static-data?personID=${encodeURIComponent(detail.husb.id)}`"
         target="_blank"
         class="admin-view-link"
       >View on tree ↗</a>
@@ -49,7 +49,7 @@
               <a :href="`/admin/individual-edit?id=${detail.husb.id}`" class="admin-btn-outline admin-btn--sm">
                 Edit
               </a>
-              <a :href="`/?indi=${encodeURIComponent(detail.husb.id)}`" target="_blank" class="admin-view-link">
+              <a :href="`/static-data?personID=${encodeURIComponent(detail.husb.id)}`" target="_blank" class="admin-view-link">
                 View ↗
               </a>
             </div>
@@ -72,7 +72,7 @@
               <a :href="`/admin/individual-edit?id=${detail.wife.id}`" class="admin-btn-outline admin-btn--sm">
                 Edit
               </a>
-              <a :href="`/?indi=${encodeURIComponent(detail.wife.id)}`" target="_blank" class="admin-view-link">
+              <a :href="`/static-data?personID=${encodeURIComponent(detail.wife.id)}`" target="_blank" class="admin-view-link">
                 View ↗
               </a>
             </div>

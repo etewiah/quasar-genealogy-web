@@ -52,7 +52,7 @@
       <div class="admin-action-row">
         <a
           v-if="firstIndiId"
-          :href="`/?indi=${encodeURIComponent(firstIndiId)}`"
+          :href="`/static-data?personID=${encodeURIComponent(firstIndiId)}`"
           target="_blank"
           class="admin-btn-primary"
         >View Tree ↗</a>

@@ -6,7 +6,7 @@
       <h2 class="admin-page-title">Edit Individual</h2>
       <a
         v-if="form"
-        :href="`/?indi=${encodeURIComponent(form.id)}`"
+        :href="`/static-data?personID=${encodeURIComponent(form.id)}`"
         target="_blank"
         class="admin-view-link"
       >View on tree ↗</a>
@@ -154,10 +154,33 @@ const breadcrumbs = computed(() => {
   ]
 })
 
-function extractDateText(val) {
+// Stored dates come from GEDCOM as { year, month, day, confirmed } — or,
+// for dates GEDCOM couldn't fully parse, { text }. This form edits a single
+// plain-text field, so we convert structured -> text on load and try to
+// parse text -> structured on save (falling back to { text } so nothing
+// the user typed is ever lost).
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+
+function dateToText(val) {
   if (!val) return ''
   if (typeof val === 'string') return val
-  return val.text ?? ''
+  if (val.text) return val.text
+  const { day, month, year } = val
+  return [day, month && MONTHS[month - 1], year].filter(Boolean).join(' ')
+}
+
+function textToDate(text) {
+  const trimmed = (text ?? '').trim()
+  if (!trimmed) return null
+  const full = trimmed.match(/^(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{3,4})$/)
+  if (full) {
+    const monthIndex = MONTHS.indexOf(full[2].toUpperCase().slice(0, 3))
+    if (monthIndex !== -1) {
+      return { day: Number(full[1]), month: monthIndex + 1, year: Number(full[3]) }
+    }
+  }
+  if (/^\d{3,4}$/.test(trimmed)) return { year: Number(trimmed) }
+  return { text: trimmed }
 }
 
 onMounted(async () => {
@@ -166,8 +189,8 @@ onMounted(async () => {
     form.value = {
       ...indi,
       sex:   indi.sex ?? '',
-      birth: { place: '', ...indi.birth, date: extractDateText(indi.birth?.date) },
-      death: { place: '', ...indi.death, date: extractDateText(indi.death?.date) },
+      birth: { place: '', ...indi.birth, date: dateToText(indi.birth?.date) },
+      death: { place: '', ...indi.death, date: dateToText(indi.death?.date) },
     }
   } finally {
     loading.value = false
@@ -183,8 +206,8 @@ async function handleSave() {
       firstName: form.value.firstName,
       lastName:  form.value.lastName,
       sex:       form.value.sex,
-      birth:     { date: { text: form.value.birth.date }, place: form.value.birth.place },
-      death:     { date: { text: form.value.death.date }, place: form.value.death.place },
+      birth:     { date: textToDate(form.value.birth.date), place: form.value.birth.place },
+      death:     { date: textToDate(form.value.death.date), place: form.value.death.place },
       living:    form.value.living,
     })
     saved.value = true
